@@ -1,6 +1,6 @@
 # --- IDEs ---
 .idea/
-main/.vscode/
+.vscode/
 *.iml
 *.iws
 *.ipr
