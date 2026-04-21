@@ -1,6 +1,7 @@
 package main;
 
 import model.Hamburger;
+import model.Dessert;
 import model.Ingredient;
 
 public class main {
