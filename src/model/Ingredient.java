@@ -30,7 +30,14 @@ public enum Ingredient {
     MAYONNAISE("Mayonnaise", 0.0),
     SPICY_SAUCE("Spicy Sauce", 1.00),
     GREEN_SAUCE("Green Sauce", 1.25),
-    GARLIC_SAUCE("Garlic Sauce", 1.50);
+    GARLIC_SAUCE("Garlic Sauce", 1.50),
+
+    // Extras and Coverages
+    ICE_CREAM_SCOOP("Ice Cream Scoop", 3.50),
+    CHOCOLATE_SYRUP("Chocolate Syrup", 1.50),
+    STRAWBERRY_SYRUP("Strawberry Syrup", 1.50),
+    WHIPPED_CREAM("Whipped Cream", 2.00),
+    CHOC_CHIPS("Chocolate Chips", 1.00);
 
     // Enum attributes
     private final String displayName;
