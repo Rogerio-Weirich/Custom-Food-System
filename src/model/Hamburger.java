@@ -18,14 +18,14 @@ public class Hamburger extends Product {
      */
     @Override
     public String getDetails() {
-        stringBuilder details = new Stringbuilder(super.getDetails());
+        StringBuilder details = new StringBuilder(super.getDetails());
         if (!getAddons().isEmpty()) {
             details.append("\n -> Customizable Addons: ");
 
             getAddons().forEach(addon ->
                     details.append(addon.getDisplayName()).append(", ")
             );
-            details.setLenght(details.lenght() - 2);
+            details.setLength(details.length() - 2);
         }
         return details.toString();
     }
