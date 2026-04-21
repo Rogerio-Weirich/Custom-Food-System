@@ -9,7 +9,7 @@ In Progress: Developing the core Domain Model and Business Logic.
 
 * [✔️] Product Superclass (Base structure, stock management, and pricing contract)
 
-* [  ] Ingredient/Addon Enum (Categorized ingredients for customization)
+* [✔️] Ingredient/Addon Enum (Categorized ingredients for customization)
 
 * [  ] Subclasses Implementation (Hamburger, Sandwiches, Sides, Desserts)
 
