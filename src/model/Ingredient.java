@@ -24,6 +24,12 @@ public enum Ingredient {
     DOUBLE_PATTY("Double Patty", 6.00),
     ONION_RINGS("Onion Rings", 4.50),
 
+    // Extra addons (For Sides)
+    CHEDDAR_SAUCE("Cheddar Suace", 3.00),
+    BACON_BITS("Bacon Bits", 2.50),
+    PARMESAN("Grated Parmesan", 2.00),
+    GARLIC_MAYONNAISE("Garlic Mayonnaise Dip", 1.50),
+
     // Sauces (few free, some paid)
     KETCHUP("Ketchup", 0.0),
     MUSTARD("Mustard", 0.0),
@@ -37,7 +43,15 @@ public enum Ingredient {
     CHOCOLATE_SYRUP("Chocolate Syrup", 1.50),
     STRAWBERRY_SYRUP("Strawberry Syrup", 1.50),
     WHIPPED_CREAM("Whipped Cream", 2.00),
-    CHOC_CHIPS("Chocolate Chips", 1.00);
+    CHOC_CHIPS("Chocolate Chips", 1.00),
+
+    // Extra for Beverage
+    ICE_CUBES("Ice Cubes", 0.0),
+    LEMON_SLICE("Lemon Slice", 0.0),
+    MINT_LEAVES("Mint Leaves", 0.0),
+    VANILLA_SYRUP("Vanilla Flavor Syrup", 2.00),
+    CARAMEL_SYRUP("Caramel Falvor Syrup", 2.00);
+
 
     // Enum attributes
     private final String displayName;
