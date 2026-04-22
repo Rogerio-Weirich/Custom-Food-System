@@ -40,7 +40,7 @@ custom-food-system/
 │       └── snackbar/
 │           ├── Main.java        
 │           └── com.snackbar.model/            
-│             ├── Product.java
+│             ├── Product.java (superclass)
 │             ├── Ingredient.java (Enum)
 │             └── ... (Other Subclasses)
 ├── .gitignore
