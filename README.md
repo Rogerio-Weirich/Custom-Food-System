@@ -11,11 +11,11 @@ In Progress: Developing the core Domain Model and Business Logic.
 
 * [✔️] Ingredient/Addon Enum (Categorized ingredients for customization)
 
-* [  ] Subclasses Implementation (Hamburger, Sandwiches, Sides, Desserts)
+* [✔️] Subclasses Implementation (Hamburger, Sandwiches, Sides, Wieners, Desserts)
+
+* [✔️] Drink & Combo Systems (Implementation of beverages and special pricing)
 
 * [  ] Customization Logic (Addon integration and final price calculation)
-
-* [  ] Drink & Combo Systems (Implementation of beverages and special pricing)
 
 * [  ] MySQL Persistence Layer (Database schema, DDL/DML, and JDBC)
 
@@ -37,7 +37,15 @@ In Progress: Developing the core Domain Model and Business Logic.
 custom-food-system/
 │   └── src/
 │       └── model/
-│           └── Product.java
+│           ├── Product.java    (Superclass)
+│           ├── Ingredient.java (Enum)
+│           ├── Hamburger.java
+│           ├── Sandwich.java
+│           ├── Wiener.java
+│           ├── Side.java
+│           ├── Combo.java
+│           ├── Dessert.java
+│           └── Beverage.java
 ├── .gitignore
 └── README.md
 ```
