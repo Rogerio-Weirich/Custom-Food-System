@@ -1,4 +1,4 @@
-package model;
+package com.snackbar.model;
 
 public class Hamburger extends Product {
     public Hamburger(String name, double basePrice, String description, int initialStock) {

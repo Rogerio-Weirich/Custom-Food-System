@@ -1,8 +1,7 @@
-package main;
+package com.snackbar.main;
 
-import model.Hamburger;
-import model.Dessert;
-import model.Ingredient;
+import com.snackbar.model.Hamburger;
+import com.snackbar.model.Ingredient;
 
 public class main {
     static void main(String[] args) {

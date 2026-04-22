@@ -1,4 +1,4 @@
-package model;
+package com.snackbar.model;
 
 public enum Ingredient {
     // Base buns (no extra cost)

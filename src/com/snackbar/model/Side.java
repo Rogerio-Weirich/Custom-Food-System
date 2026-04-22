@@ -1,4 +1,4 @@
-package model;
+package com.snackbar.model;
 
 public class Side extends Product {
     public Side(String name, double basePrice, String description, int initalStock) {

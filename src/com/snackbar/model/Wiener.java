@@ -1,4 +1,4 @@
-package model;
+package com.snackbar.model;
 
 public class Wiener extends Product {
     public Wiener(String name, double basePrice, String description, int initialStock) {

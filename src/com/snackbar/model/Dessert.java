@@ -1,4 +1,4 @@
-package model;
+package com.snackbar.model;
 
 public class Dessert extends Product {
     public Dessert(String name, double basePrice, String description, int initialStock) {
