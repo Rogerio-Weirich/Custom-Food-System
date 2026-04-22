@@ -35,17 +35,14 @@ In Progress: Developing the core Domain Model and Business Logic.
 
 ```
 custom-food-system/
-│   └── src/
-│       └── model/
-│           ├── Product.java    (Superclass)
-│           ├── Ingredient.java (Enum)
-│           ├── Hamburger.java
-│           ├── Sandwich.java
-│           ├── Wiener.java
-│           ├── Side.java
-│           ├── Combo.java
-│           ├── Dessert.java
-│           └── Beverage.java
+│   src/
+│   └── com/
+│       └── snackbar/
+│           ├── Main.java        
+│           └── com.snackbar.model/            
+│             ├── Product.java
+│             ├── Ingredient.java (Enum)
+│             └── ... (Other Subclasses)
 ├── .gitignore
 └── README.md
 ```
