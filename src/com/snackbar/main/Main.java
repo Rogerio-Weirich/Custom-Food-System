@@ -3,8 +3,8 @@ package com.snackbar.main;
 import com.snackbar.model.Hamburger;
 import com.snackbar.model.Ingredient;
 
-public class main {
-    static void main(String[] args) {
+public class Main {
+    public static void main(String[] args) {
         System.out.println("=== Starting the Custom Food System ====");
 
         Hamburger simpleBurger = new Hamburger("Classic Burger", 18.90, "Traditional Beef Patty", 50);
@@ -15,7 +15,7 @@ public class main {
         Hamburger customBurger = new Hamburger ("Custom Burger", 22.90, "Monster Beef Patty", 30);
 
         customBurger.addIngredient(Ingredient.BACON);
-        customBurger.addIngredient(Ingredient.CHEESE);
+        customBurger.addIngredient(Ingredient.CHEDDAR_CHEESE);
         customBurger.addIngredient(Ingredient.SPICY_SAUCE);
 
         System.out.println("--- Order 2: Custom ---");
