@@ -1,5 +1,9 @@
 package com.snackbar.model;
 
+import com.snackbar.util.InvalidItemException;
+import com.snackbar.util.InvalidOrderStatusException;
+import com.snackbar.util.OutOfStockException;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -36,10 +40,6 @@ public class Order {
         return status;
     }
 
-    public void setStatus(OrderStatus status) {
-        this.status = status;
-    }
-
     public List<Product> getItems() {
         return Collections.unmodifiableList(items);
     }
@@ -50,14 +50,24 @@ public class Order {
      *  Adds a product to the order, if available in stock
      */
     public void addProduct(Product product) {
-        if (product != null && product.isAvailable()) {
-            this.items.add(product);
-            product.decreaseStock(1); // It automatically updates the inventory when add item to cart
-        } else {
-            System.out.println("[ X ] Product" +
-            (product != null ? product.getName() : "invalid") +
-            "No current stock");
+        if (product == null) {
+            throw new InvalidItemException("Failed to add: The product provided is invalid or inexistent");
         }
+
+        if (!product.isAvailable()) {
+            throw new OutOfStockException("The product: '" + product.getName() + "' is currently out of stock");
+        }
+
+        this.items.add(product);
+        product.decreaseStock(1);
+    }
+
+    public void setStatus(OrderStatus newStatus) {
+        if (this.status == OrderStatus.DELIVERED || this.status == OrderStatus.CANCELED) {
+            throw new InvalidOrderStatusException("It's not possible to change the Order Status that is already" +
+                    this.status.getDescription());
+        }
+        this.status = newStatus;
     }
 
     /**
