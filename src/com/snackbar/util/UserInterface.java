@@ -55,6 +55,8 @@ public class UserInterface {
             case 0:
                 System.out.println("Finishing your order... ");
                 System.out.println(currentOrder.generateReceipt());
+                DataPersistence.saveReceiptToFile(currentOrder);
+
                 return false;
             default:
                 System.out.println("[ X ] Invalid option. Try again!");
