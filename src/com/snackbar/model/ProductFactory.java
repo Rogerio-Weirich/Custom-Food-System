@@ -95,7 +95,7 @@ public class ProductFactory {
     public static Beverage createCustomBeverage() {
         return new Beverage(
                 Ingredient.DRINK.getDisplayName(),
-                Ingredient.DRINK.getPrice(),
+                Ingredient.PRICE_CUSTOM_BEVERAGE.getPrice(),
                 "Choose your drink and add-ons", 100
         );
     }
@@ -132,9 +132,9 @@ public class ProductFactory {
         );
     }
 
-    public static Combo createMasterCombo() {
+    public static Combo createBurgerCombo() {
         Combo combo = new Combo(
-                "Master Combo",
+                "Hamburger Combo",
                 "Classic Burger + Fries + Soda (15% OFF)",
                 0.15, 30
         );
@@ -142,6 +142,46 @@ public class ProductFactory {
         combo.addItem(createClassicBurger());
         combo.addItem(createFries());
         combo.addItem(createSoda());
+        return combo;
+    }
+
+    public static Combo createSubCombo() {
+        Combo combo = new Combo(
+                "Sandwich Combo",
+                "Classic Sandwich + Nuggets + Natural Juice (10% OFF)",
+                0.10, 30
+        );
+
+        combo.addItem(createClassicSub());
+        combo.addItem(createNuggets());
+        combo.addItem(createJuice());
+        return combo;
+    }
+
+    public static Combo createWienerCombo() {
+        Combo combo = new Combo(
+                "Wiener Combo",
+                "Classic Hot-Dog + Onion Rings + Soda (12% OFF)",
+                0.12, 30
+        );
+
+        combo.addItem(createClassicWiener());
+        combo.addItem(createOnionRings());
+        combo.addItem(createSoda());
+        return combo;
+    }
+
+    public static Combo createServingCombo() {
+        Combo combo = new Combo(
+                "Serving Combo",
+                "Fries + Onion Rings + Nuggets + Cheese Sticks (20% OFF)",
+                0.20, 45
+        );
+
+        combo.addItem(createFries());
+        combo.addItem(createOnionRings());
+        combo.addItem(createNuggets());
+        combo.addItem(createCheeseSticks());
         return combo;
     }
 
