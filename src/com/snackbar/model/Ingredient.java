@@ -91,7 +91,9 @@ public enum Ingredient {
     PRICE_CLASSIC_SUB("", 15.00, "PRICE_REF"),
     PRICE_CUSTOM_SUB("", 12.90, "PRICE_REF"),
     PRICE_CLASSIC_WIENER("", 13.50, "PRICE_REF"),
-    PRICE_CUSTOM_WIENER("", 9.00, "PRICE_REF");
+    PRICE_CUSTOM_WIENER("", 9.00, "PRICE_REF"),
+    PRICE_CUSTOM_BEVERAGE("", 9.00, "PRICE_REF"),
+    PRICE_CUSTOM_ICE_CREAM("Custom Ice Cream Base", 7.00, "PRICE_REF");
 
     // Enum attributes
     private final String displayName;
