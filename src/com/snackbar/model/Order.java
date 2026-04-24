@@ -86,7 +86,7 @@ public class Order {
         StringBuilder receipt = new StringBuilder();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         receipt.append("=========================================\n");
-        receipt.append("       🍔 CUSTOM BURGER RECEIPT 🍔       \n");
+        receipt.append("       🍔 CUSTOM FOOD RECEIPT 🍔        \n");
         receipt.append("=========================================\n");
         receipt.append(String.format("Order: #%s | Status: %s\n", orderId, status.getDescription()));
         receipt.append(String.format("Customer: %s\n", customerName));
@@ -103,7 +103,8 @@ public class Order {
         }
 
         receipt.append("-----------------------------------------\n");
-        receipt.append(String.format("Total amount due:          R$ %.2f\\n", calculateTotalOrder()));
+        receipt.append(String.format("Total amount due:          R$ %.2f\n",
+                calculateTotalOrder()));
         receipt.append("==========================================\n");
 
         return receipt.toString();

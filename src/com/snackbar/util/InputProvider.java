@@ -59,7 +59,7 @@ public class InputProvider {
      */
     public boolean readBoolean(String prompt) {
         while (true) {
-            String input = readString(prompt + "[ Y = Yes | N = No ]").toUpperCase();
+            String input = readString(prompt + "[ Y = Yes | N = No ] ").toUpperCase();
             if (input.equals("Y") || input.equals("YES")) {
                 return true;
             } else if (input.equals("N") || input.equals("NO")) {
