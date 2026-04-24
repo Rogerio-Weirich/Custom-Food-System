@@ -18,12 +18,9 @@ public class Wiener extends Product {
             details.append("\n -> Sausages and Extras: ");
 
             getAddons().forEach(addon ->
-                details.append(addon.getDisplayName()).append(", ")
+                    details.append("\n      + ").append(addon.toString())
             );
-
-            details.setLength(details.length() - 2);
         }
-
         return details.toString();
     }
 }

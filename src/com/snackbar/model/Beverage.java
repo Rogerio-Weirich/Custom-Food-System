@@ -18,14 +18,12 @@ public class Beverage extends Product {
     @Override
     public String getDetails() {
         StringBuilder details = new StringBuilder(super.getDetails());
-
         if (!getAddons().isEmpty()) {
             details.append("\n -> Extras Beverage: ");
 
             getAddons().forEach(addon ->
-                    details.append(addon.getDisplayName()).append(", ")
+                    details.append("\n      + ").append(addon.toString())
             );
-            details.setLength(details.length() - 2);
         }
         return details.toString();
     }

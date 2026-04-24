@@ -25,9 +25,8 @@ public class Dessert extends Product {
             details.append("\n -> Coverage/Extras: ");
 
             getAddons().forEach(addon ->
-                details.append(addon.getDisplayName()).append(", ")
+                    details.append("\n      + ").append(addon.toString())
             );
-            details.setLength(details.length() - 2);
         }
         return details.toString();
     }

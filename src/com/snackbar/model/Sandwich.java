@@ -21,12 +21,9 @@ public class Sandwich extends Product {
             details.append("\n -> Fillings and Extras: ");
 
             getAddons().forEach(addon ->
-                details.append(addon.getDisplayName()).append(", ")
+                    details.append("\n      + ").append(addon.toString())
             );
-
-            details.setLength(details.length() - 2);
         }
-
         return details.toString();
     }
 }

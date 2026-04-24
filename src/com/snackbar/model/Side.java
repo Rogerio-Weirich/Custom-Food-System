@@ -18,17 +18,13 @@ public class Side extends Product {
     public String getDetails() {
         StringBuilder details = new StringBuilder(super.getDetails());
 
-        // Verify is there is addons (like bacon, etc.)
         if (!getAddons().isEmpty()) {
             details.append("\n -> Extra Sides: ");
 
             getAddons().forEach(addon ->
-                details.append(addon.getDisplayName()).append(", ")
+                    details.append("\n      + ").append(addon.toString())
             );
-
-            details.setLength(details.length() - 2);
         }
-
         return details.toString();
     }
 }

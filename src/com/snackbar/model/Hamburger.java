@@ -23,9 +23,8 @@ public class Hamburger extends Product {
             details.append("\n -> Customizable Addons: ");
 
             getAddons().forEach(addon ->
-                    details.append(addon.getDisplayName()).append(", ")
+                    details.append("\n      + ").append(addon.toString())
             );
-            details.setLength(details.length() - 2);
         }
         return details.toString();
     }
