@@ -15,6 +15,7 @@ build/
 # Se você estiver usando o VS Code, ele pode criar uma pasta lib.
 # Se for usar Maven ou Gradle no futuro, as dependências ficam no repositório local, não no projeto.
 lib/
+receipts/
 *.jar
 
 # --- Arquivos do Sistema Operacional ---
