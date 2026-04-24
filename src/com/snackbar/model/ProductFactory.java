@@ -26,7 +26,7 @@ public class ProductFactory {
     public static Sandwich createCustomSub() {
         return new Sandwich(
                 "Custom Sandwich", Ingredient.PRICE_CUSTOM_SUB.getPrice(),
-                "Build your own", 50
+                "Build your own: ", 50
         );
     }
 
@@ -96,7 +96,7 @@ public class ProductFactory {
         return new Beverage(
                 Ingredient.DRINK.getDisplayName(),
                 Ingredient.PRICE_CUSTOM_BEVERAGE.getPrice(),
-                "Choose your drink and add-ons", 100
+                "Build your own \nChoose your drink and add-ons: ", 100
         );
     }
 
@@ -128,7 +128,7 @@ public class ProductFactory {
         return new Dessert(
                 "Custom Ice Cream Cup",
                 Ingredient.PRICE_CUSTOM_ICE_CREAM.getPrice(),
-                "A Cup with 2 Scoops. Choose your toppings!", 50
+                "A Cup with 2 Scoops. \nChoose your toppings: ", 50
         );
     }
 
