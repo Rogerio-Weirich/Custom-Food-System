@@ -56,6 +56,7 @@ public class UserInterface {
                 System.out.println("Finishing your order... ");
                 System.out.println(currentOrder.generateReceipt());
                 DataPersistence.saveReceiptToFile(currentOrder);
+                com.snackbar.util.OrderDAO.saveOrderToDatabase(currentOrder);
 
                 return false;
             default:
