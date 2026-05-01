@@ -1,4 +1,4 @@
-package com.snackbar.util;
+package com.snackbar.util.presentation;
 
 import java.util.Scanner;
 

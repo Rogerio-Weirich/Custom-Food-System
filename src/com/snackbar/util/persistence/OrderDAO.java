@@ -1,4 +1,4 @@
-package com.snackbar.util;
+package com.snackbar.util.persistence;
 
 import com.snackbar.model.enums.Ingredient;
 import com.snackbar.model.Order;

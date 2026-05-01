@@ -1,4 +1,4 @@
-package com.snackbar.util;
+package com.snackbar.util.exception;
 
 /**
  * Exception thrown when occurs a forbidden status transition according to the business rule

@@ -1,4 +1,4 @@
-package com.snackbar.util;
+package com.snackbar.util.exception;
 
 /**
  * Exception thrown when there is an attempt to manipulate an invalid item/product

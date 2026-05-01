@@ -1,8 +1,10 @@
-package com.snackbar.util;
+package com.snackbar.util.presentation;
 
 import com.snackbar.model.*;
 import com.snackbar.model.enums.Ingredient;
 import com.snackbar.model.products.*;
+import com.snackbar.util.persistence.DataPersistence;
+import com.snackbar.util.persistence.OrderDAO;
 
 public class UserInterface {
 
@@ -58,7 +60,7 @@ public class UserInterface {
                 System.out.println("Finishing your order... ");
                 System.out.println(currentOrder.generateReceipt());
                 DataPersistence.saveReceiptToFile(currentOrder);
-                com.snackbar.util.OrderDAO.saveOrderToDatabase(currentOrder);
+                OrderDAO.saveOrderToDatabase(currentOrder);
 
                 return false;
             default:

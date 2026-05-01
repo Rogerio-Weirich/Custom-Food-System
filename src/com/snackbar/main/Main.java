@@ -1,6 +1,6 @@
 package com.snackbar.main;
 
-import com.snackbar.util.UserInterface;
+import com.snackbar.util.presentation.UserInterface;
 
 
 public class Main {
