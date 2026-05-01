@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.io.IOException;
-import java.time.format.DateTimeFormatter;
 
 public class DataPersistence {
     private static final String FOLDER_PATH = "receipts/";
