@@ -28,11 +28,13 @@ In Progress: Developing the core Domain Model and Business Logic.
 
 * [✔️] CLI User Interface (Interactive console-based ordering)
 
+* [✔️] MySQL Persistence Layer (Database schema, DDL/DML, and JDBC)
+
+* [✔️] JDBC (Java Database Connectivity): Connection setup and execution of DDL/DML queries via Java.
+
 ## 🗺️ Development Roadmap Next Steps:
 
-* [  ] MySQL Persistence Layer (Database schema, DDL/DML, and JDBC)
-
-* [  ] JDBC (Java Database Connectivity): Connection setup and execution of DDL/DML queries via Java.
+* [  ] Working on it...
 
 ## 🛠️ Tech Stack & Concepts
 
@@ -48,21 +50,36 @@ In Progress: Developing the core Domain Model and Business Logic.
 
 ```
 custom-food-system/
-│   src/
+├── database/                                
+├── src/
 │   └── com/
 │       └── snackbar/
-│           ├── Main.java        
-│           ├── com.snackbar.model/            
-│           │   ├── Ingredient.java (Enum)
-│           │   ├── OrderStatus.java
-│           │   ├── Product.java (superclass)
-│           │   ├── ProductFactory.java 
-│           │   └── ... (Other Subclasses)
-│           └── com.snackbar.util/
-│               ├── DataPersistence.java
-│               ├── InputProvider.java
-│               ├── UserInterface.java
-│               └── ... (Exception classes)
+│           ├── main/
+│           │   └── Main.java                
+│           │
+│           ├── model/                       
+│           │   ├── Product.java             
+│           │   ├── Order.java               
+│           │   ├── ProductFactory.java      
+│           │   ├── enums/                   
+│           │   │   ├── Ingredient.java      
+│           │   │   └── OrderStatus.java
+│           │   └── products/                
+│           │       └── ... (Product subclasses)
+│           │
+│           └── util/                        
+│               ├── exception/               
+│               │   └── ... (Custom exceptions)
+│               │
+│               ├── persistence/             
+│               │   ├── DatabaseConnection.java
+│               │   ├── OrderDAO.java        
+│               │   └── DataPersistence.java 
+│               │
+│               └── presentation/            
+│                   ├── UserInterface.java   
+│                   └── InputProvider.java   
+│
 ├── .gitignore
 └── README.md
 ```
@@ -71,7 +88,7 @@ custom-food-system/
 
 1. Clone the repository:
 ```bash
-  https://github.com/Rogerio-Weirich/Custom-Food-System.git
+  [Repository](https://github.com/Rogerio-Weirich/Custom-Food-System.git)
  ```
 2. Open the Project in your preferred IDE (IntelliJ IDEA, Eclipse, VS Code).
 3. Run the `Main.java` class located in the `main` package.
