@@ -86,10 +86,10 @@ custom-food-system/
 
 ## 💻 How to run
 
-1. Clone the repository:
-```bash
-  [Repository](https://github.com/Rogerio-Weirich/Custom-Food-System.git)
- ```
+1. Clone the Repository:
+
+ 🔗 git [repository](https://github.com/Rogerio-Weirich/Custom-Food-System.git)
+
 2. Open the Project in your preferred IDE (IntelliJ IDEA, Eclipse, VS Code).
 3. Run the `Main.java` class located in the `main` package.
 4. Follow the terminal instructions to interact with the system.
