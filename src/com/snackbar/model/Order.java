@@ -1,5 +1,6 @@
 package com.snackbar.model;
 
+import com.snackbar.model.enums.OrderStatus;
 import com.snackbar.util.InvalidItemException;
 import com.snackbar.util.InvalidOrderStatusException;
 import com.snackbar.util.OutOfStockException;

@@ -1,25 +1,26 @@
-package com.snackbar.model;
+package com.snackbar.model.products;
 
-public class Beverage extends Product {
-    public Beverage(String name, double basePrice, String description, int initialStock) {
-        super(name, basePrice,description,initialStock);
+import com.snackbar.model.Product;
+
+public class Sandwich extends Product {
+    public Sandwich(String name, double basePrice, String description, int initialStock) {
+        super(name, basePrice, description, initialStock);
     }
 
     /**
-     * Business rule to calculate the implemantation of Beverage
-     * Base Price + any extra that the client would want to add
+     * Implementation of the pricing rule: Base price + Extra Filling price
      */
     @Override
     public double calculateFinalPrice() {
         return getBasePrice() + calculateAddonsPrice();
     }
 
-
     @Override
     public String getDetails() {
         StringBuilder details = new StringBuilder(super.getDetails());
+
         if (!getAddons().isEmpty()) {
-            details.append("\n -> Extras Beverage: ");
+            details.append("\n -> Fillings and Extras: ");
 
             getAddons().forEach(addon ->
                     details.append("\n      + ").append(addon.toString())

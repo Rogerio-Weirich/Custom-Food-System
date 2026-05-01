@@ -1,5 +1,8 @@
 package com.snackbar.model;
 
+import com.snackbar.model.enums.Ingredient;
+import com.snackbar.model.products.*;
+
 public class ProductFactory {
 
     public static Hamburger createClassicBurger() {

@@ -1,4 +1,4 @@
-package com.snackbar.model;
+package com.snackbar.model.enums;
 
 // Enum that represents the possible status of an order at the system
 public enum OrderStatus {

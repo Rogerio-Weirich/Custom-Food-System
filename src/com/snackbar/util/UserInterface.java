@@ -1,6 +1,8 @@
 package com.snackbar.util;
 
 import com.snackbar.model.*;
+import com.snackbar.model.enums.Ingredient;
+import com.snackbar.model.products.*;
 
 public class UserInterface {
 
@@ -234,7 +236,7 @@ public class UserInterface {
             for (int i = 0; i < options.length; i++) {
                 System.out.println((i + 1) + ". " + options[i]);
             }
-            int choice = input.readInt("Obrigatory Option: ");
+            int choice = input.readInt("Obligatory Option: ");
 
             if (choice > 0 && choice <= options.length) {
                 Ingredient selected = options[choice - 1];

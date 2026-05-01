@@ -1,4 +1,6 @@
-package com.snackbar.model;
+package com.snackbar.model.products;
+
+import com.snackbar.model.Product;
 
 import java.util.ArrayList;
 import java.util.List;

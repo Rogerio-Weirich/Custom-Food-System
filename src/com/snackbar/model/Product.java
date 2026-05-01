@@ -1,5 +1,7 @@
 package com.snackbar.model;
 
+import com.snackbar.model.enums.Ingredient;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

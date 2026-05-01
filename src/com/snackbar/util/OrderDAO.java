@@ -1,6 +1,6 @@
 package com.snackbar.util;
 
-import com.snackbar.model.Ingredient;
+import com.snackbar.model.enums.Ingredient;
 import com.snackbar.model.Order;
 import com.snackbar.model.Product;
 

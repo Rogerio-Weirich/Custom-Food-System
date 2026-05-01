@@ -1,4 +1,4 @@
-package com.snackbar.model;
+package com.snackbar.model.enums;
 
 import java.util.Arrays;
 
