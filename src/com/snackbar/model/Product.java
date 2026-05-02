@@ -78,7 +78,7 @@ public abstract class Product {
 
     public String getDetails() {
         String shortId = id.substring(0, 8);
-        return String.format("ID: [%s]  | Product: %s \nPrice: R$ %.2f | \nDescription: %s",
+        return String.format("ID: [%s]  | PRODUCT: %s \nPRICE: R$ %.2f | \nDESCRIPTION: %s",
                 shortId, name, getBasePrice(),description);
     }
 }
