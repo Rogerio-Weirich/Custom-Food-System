@@ -1,23 +1,28 @@
 package com.snackbar.main;
 
-import com.snackbar.util.presentation.UserInterface;
+import com.snackbar.presentation.ConsoleUI;
+import com.snackbar.presentation.UserUI;
+import com.snackbar.util.InputProvider;
 
 
 public class Main {
     public static void main(String[] args) {
         System.out.println("[ SYSTEM ] Initializing operation modules...\n");
 
+        InputProvider input = new InputProvider();
+
         try {
-            UserInterface ui = new UserInterface();
+            UserUI ui = new ConsoleUI(input);
             ui.start();
         } catch (Exception e) {
             System.out.println("\n" +
                     "❌ FATAL ERROR: " +
                     "\nThe system encountered an unexpected problem and needed to be shut down.."
             );
-            System.out.println("Tecnical Details: " + e.getMessage());
+            System.out.println("Technical Details: " + e.getMessage());
             e.printStackTrace();
         } finally {
+            input.close();
             System.out.println("\n[ SYSTEM ] Operation completed safely. Come back soon!");
         }
     }

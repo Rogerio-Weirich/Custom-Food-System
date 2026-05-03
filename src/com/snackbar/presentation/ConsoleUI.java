@@ -1,18 +1,18 @@
-package com.snackbar.util.presentation;
+package com.snackbar.presentation;
 
 import com.snackbar.model.*;
 import com.snackbar.model.enums.Ingredient;
 import com.snackbar.model.products.*;
-import com.snackbar.util.persistence.DataPersistence;
-import com.snackbar.util.persistence.OrderDAO;
+import com.snackbar.persistence.DataPersistence;
+import com.snackbar.persistence.OrderDAO;
+import com.snackbar.util.InputProvider;
 
-public class UserInterface {
-
+public class ConsoleUI implements UserUI {
     private final InputProvider input;
     private Order currentOrder;
 
-    public UserInterface () {
-        this.input = new InputProvider();
+    public ConsoleUI(InputProvider input) {
+        this.input = input;
     }
 
     public void start() {
