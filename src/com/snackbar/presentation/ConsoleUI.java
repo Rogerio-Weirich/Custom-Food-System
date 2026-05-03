@@ -40,7 +40,7 @@ public class UserInterface {
         System.out.println("3. [🌭] Wiener");
         System.out.println("4. [🍟] Side");
         System.out.println("5. [🥤] Drink");
-        System.out.println("6. [🍰] Dissert");
+        System.out.println("6. [🍰] Dessert");
         System.out.println("7. [📦] Combo");
         System.out.println("8. [🧾] Check Cart | Receipt");
         System.out.println("0. Finish Order and Exit");

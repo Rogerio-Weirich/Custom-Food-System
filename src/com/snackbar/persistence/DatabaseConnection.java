@@ -1,4 +1,4 @@
-package com.snackbar.util.persistence;
+package com.snackbar.persistence;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

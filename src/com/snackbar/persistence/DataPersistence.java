@@ -1,4 +1,4 @@
-package com.snackbar.util.persistence;
+package com.snackbar.persistence;
 
 import com.snackbar.model.Order;
 
