@@ -1,6 +1,7 @@
 package com.snackbar.persistence;
 
 import com.snackbar.model.Order;
+import com.snackbar.util.Icon;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -23,10 +24,18 @@ public class DataPersistence {
 
             printWriter.print(order.generateReceipt());
 
-            System.out.println("📄 Receipt successfully saved at: " + fileName);
+            System.out.println(
+                Icon.RECEIPT + 
+                " Receipt successfully saved at: " + 
+                fileName
+            );
 
         } catch (IOException e) {
-            System.out.println("[ ❌ ] Error while trying to save the Receipt: " + e.getMessage());
+            System.out.println(
+                Icon.ERROR + 
+                " Error while trying to save the Receipt: " + 
+                e.getMessage()
+        );
         }
     }
 }

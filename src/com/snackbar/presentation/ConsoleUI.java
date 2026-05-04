@@ -5,6 +5,7 @@ import com.snackbar.model.enums.Ingredient;
 import com.snackbar.model.products.*;
 import com.snackbar.persistence.DataPersistence;
 import com.snackbar.persistence.OrderDAO;
+import com.snackbar.util.Icon;
 import com.snackbar.util.InputProvider;
 
 public class ConsoleUI implements UserUI {
@@ -17,7 +18,7 @@ public class ConsoleUI implements UserUI {
 
     public void start() {
         System.out.println("=========================================\n");
-        System.out.println("           🍔 CUSTOM FOOD 🍔            \n");
+        System.out.println("               CUSTOM FOOD               \n");
         System.out.println("=========================================\n");
 
         String customerName = input.readString("Please, enter your name to begin: ");
@@ -34,16 +35,17 @@ public class ConsoleUI implements UserUI {
     }
 
     private boolean showMainMenu() {
-        System.out.println("\n--- MAIN MENU ---");
-        System.out.println("1. [🍔] Hamburger");
-        System.out.println("2. [🥖] Sandwich");
-        System.out.println("3. [🌭] Wiener");
-        System.out.println("4. [🍟] Side");
-        System.out.println("5. [🥤] Drink");
-        System.out.println("6. [🍰] Dessert");
-        System.out.println("7. [📦] Combo");
-        System.out.println("8. [🧾] Check Cart | Receipt");
+        System.out.println("\n======= MAIN MENU =======");
+        System.out.println("1. " + Icon.HAMBURGER + " Hamburger");
+        System.out.println("2. " + Icon.SANDWICH + " Sandwich");
+        System.out.println("3. " + Icon.WIENER + " Wiener");
+        System.out.println("4. " + Icon.SIDE + " Side");
+        System.out.println("5. " + Icon.DRINK + " Drink");
+        System.out.println("6. " + Icon.DESSERT + " Dessert");
+        System.out.println("7. " + Icon.COMBO + " Combo");
+        System.out.println("8. " + Icon.RECEIPT + " Check out");
         System.out.println("0. Finish Order and Exit");
+        System.out.println("\n=========================");
 
         int choice = input.readInt("Choose an option: ");
 
@@ -57,14 +59,14 @@ public class ConsoleUI implements UserUI {
             case 7: buildCombo(); break;
             case 8: System.out.println(currentOrder.generateReceipt()); break;
             case 0:
-                System.out.println("Finishing your order... ");
+                System.out.println(Icon.SAVE + "Processing your order... ");
                 System.out.println(currentOrder.generateReceipt());
                 DataPersistence.saveReceiptToFile(currentOrder);
                 OrderDAO.saveOrderToDatabase(currentOrder);
 
                 return false;
             default:
-                System.out.println("[ X ] Invalid option. Try again!");
+                System.out.println(Icon.ERROR + " Invalid option. Try again!");
         }
         return true;
     }
@@ -73,7 +75,7 @@ public class ConsoleUI implements UserUI {
     private void buildHamburger() {
         System.out.println("\n--- HAMBURGER MENU ---");
         System.out.println("1. Classic - Standard");
-        System.out.println("2. Custom - Build Your Own");
+        System.out.println("2. Custom  - Build Your Own");
         System.out.println("0. Back");
         int type = input.readInt("Option: ");
 
@@ -98,7 +100,7 @@ public class ConsoleUI implements UserUI {
     private void buildSandwich() {
         System.out.println("\n--- SANDWICH MENU ---");
         System.out.println("1. Classic - Standard");
-        System.out.println("2. Custom - Build Your Own");
+        System.out.println("2. Custom  - Build Your Own");
         System.out.println("0. Back");
         int type = input.readInt("Option: ");
 
@@ -123,7 +125,7 @@ public class ConsoleUI implements UserUI {
     private void buildWiener() {
         System.out.println("\n--- WIENER MENU ---");
         System.out.println("1. Classic - Standard");
-        System.out.println("2. Custom - Build Your Own");
+        System.out.println("2. Custom  - Build Your Own");
         System.out.println("0. Back");
         int type = input.readInt("Option: ");
 
@@ -161,7 +163,7 @@ public class ConsoleUI implements UserUI {
             case 3: side = ProductFactory.createNuggets(); break;
             case 4: side = ProductFactory.createCheeseSticks(); break;
             case 0: return;
-            default: System.out.println("[ ✖️ ] Invalid Option."); return;
+            default: System.out.println(Icon.ERROR + " Invalid Option."); return;
         }
 
         offerExtras(side, Ingredient.filterByCategory("SAUCE"));
@@ -182,7 +184,7 @@ public class ConsoleUI implements UserUI {
             case 2: bev = ProductFactory.createJuice(); break;
             case 3: bev = ProductFactory.createCustomBeverage(); break;
             case 0: return;
-            default: System.out.println("[ ✖️ ] Invalid Option."); return;
+            default: System.out.println(Icon.ERROR + " Invalid Option."); return;
         }
 
         offerExtras(bev, Ingredient.filterByCategory("BEV_EXTRA"));
@@ -205,7 +207,7 @@ public class ConsoleUI implements UserUI {
             case 3: dessert = ProductFactory.createIceCream(); break;
             case 4: dessert = ProductFactory.createCustomIceCream(); break;
             case 0: return;
-            default: System.out.println("[ ✖️ ] Invalid Option."); return;
+            default: System.out.println(Icon.ERROR + " Invalid Option."); return;
         }
 
         offerExtras(dessert, Ingredient.filterByCategory("DESSERT"));
@@ -229,7 +231,7 @@ public class ConsoleUI implements UserUI {
             case 4: addToOrder(ProductFactory.createServingCombo()); break;
             case 5: addToOrder(ProductFactory.createKidsCombo());
             case 0: return;
-            default: System.out.println("[ ✖️ ] Invalid Option.");
+            default: System.out.println(Icon.ERROR + " Invalid Option.");
         }
     }
 
@@ -243,10 +245,15 @@ public class ConsoleUI implements UserUI {
             if (choice > 0 && choice <= options.length) {
                 Ingredient selected = options[choice - 1];
                 product.addIngredient(selected);
-                System.out.println("[ ✔️ ]" + selected.getDisplayName() + " added!");
+                System.out.println(
+                    Icon.SUCCESS + 
+                    " " + 
+                    selected.getDisplayName() + 
+                    " added!"
+                );
                 break;
             } else {
-                System.out.println("[ ✖️ ] Invalid Option. ");
+                System.out.println(Icon.ERROR + " Invalid Option. ");
             }
         }
     }
@@ -254,7 +261,7 @@ public class ConsoleUI implements UserUI {
     private void offerExtras(Product product, Ingredient[] options) {
         if (options.length == 0) return;
 
-        boolean addingExtras = input.readBoolean("Do you want to add Extras | Customize? ");
+        boolean addingExtras = input.readBoolean("Add Extras | Customize? ");
 
         while (addingExtras) {
             System.out.println("\nAvailable Options: ");
@@ -262,16 +269,21 @@ public class ConsoleUI implements UserUI {
                 System.out.println((i + 1) + ". " + options[i]);
             }
 
-            int extraChoice = input.readInt("0. To Exit and Finish Customization\nSelect the extra: ");
+            int extraChoice = input.readInt("0. Exit and Finish Customization\nSelect the extra: ");
 
             if (extraChoice == 0) {
                 addingExtras = false;
             } else if (extraChoice > 0 && extraChoice <= options.length) {
                 Ingredient selected = options[extraChoice - 1];
                 product.addIngredient(selected);
-                System.out.println("[ ✔️ ]" + selected.getDisplayName() + " added!");
+                System.out.println(
+                    Icon.SUCCESS + 
+                    " " + 
+                    selected.getDisplayName() + 
+                    " added!"
+                );
             } else {
-                System.out.println("[ ✖️ ] Invalid Option. ");
+                System.out.println(Icon.ERROR + " Invalid Option. ");
             }
         }
     }
@@ -279,9 +291,18 @@ public class ConsoleUI implements UserUI {
     public void addToOrder(Product product) {
         try {
             currentOrder.addProduct(product);
-            System.out.println("🛒 [" + product.getName() + "] successfully added to the cart!");
+            System.out.println(
+                Icon.CART + " [" +
+                product.getName() + 
+                "] successfully added to the cart!" +
+                Icon.SUCCESS
+            );
         } catch (Exception e) {
-            System.out.println("[ ✖️ ] Failed to add: " + e.getMessage());
+            System.out.println(
+                Icon.ERROR + 
+                " Failed to add: " + 
+                e.getMessage()
+            );
         }
     }
 }

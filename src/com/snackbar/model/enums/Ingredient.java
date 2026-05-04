@@ -102,7 +102,7 @@ public enum Ingredient {
 
     /**
      * Enum Constructor.
-     * @param displayName the "pretty" name which user will see. 😎
+     * @param displayName the "pretty" name which user will see. 
      * @param price the value which will be added to the order if it is selected.
      */
     Ingredient(String displayName, double price, String category) {

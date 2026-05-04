@@ -33,7 +33,9 @@ public class InputProvider {
                 String input = scanner.nextLine().trim();
                 return Integer.parseInt(input);
             } catch (NumberFormatException e) {
-                System.out.println("[ X ] Invalid input. Please enter an integer without letters or periods.");
+                System.out.println(
+                    Icon.ERROR + " Invalid input.\n Please enter an integer without letters or periods."
+                );
             }
         }
     }
@@ -49,7 +51,9 @@ public class InputProvider {
                 input = input.replace(",", ".");
                 return Double.parseDouble(input);
             } catch (NumberFormatException e) {
-                System.out.println("[ X ] Invalid Decimal input. Please enter a valid number! [ Ex.: 1.50 or 1,50 ]");
+                System.out.println(
+                    Icon.ERROR + " Invalid Decimal input.\n Please enter a valid number! [ Ex.: 1.50 or 1,50 ]"
+                );
             }
         }
     }
@@ -65,7 +69,10 @@ public class InputProvider {
             } else if (input.equals("N") || input.equals("NO")) {
                 return false;
             } else {
-                System.out.println("Invalid option. Type 'Y' to Yes and 'N' to No");
+                System.out.println(
+                    Icon.ERROR + "Invalid option.\n Type 'Y' to Yes and 'N' to No"
+
+                );
             }
         }
     }

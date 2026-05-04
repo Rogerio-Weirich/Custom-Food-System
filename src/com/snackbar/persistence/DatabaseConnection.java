@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import com.snackbar.util.Icon;
+
 public class DatabaseConnection {
 
     private static final String URL = "jdbc:mysql://localhost:3306/custom_food_db";
@@ -15,11 +17,19 @@ public class DatabaseConnection {
             Class.forName("com.mysql.cj.jdbc.Driver");
             return DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (ClassNotFoundException e) {
-            System.err.println("[ X ] MySQL Driver not found! Ensure the library was correctly added.");
+            System.err.println(
+                Icon.ERROR + " MySQL Driver not found! Ensure the library was correctly added."
+            );
             throw new RuntimeException(e);
         } catch (SQLException e) {
-            System.err.println("[ X ] Database connection failed!");
-            System.err.println("Check if MySQL is running. \nCheck if the password is correct.");
+            System.err.println(
+                Icon.ERROR + " Database connection failed!"
+
+            );
+            System.err.println(
+                Icon.INFO + " Check if MySQL is running. \n" +
+                Icon.INFO + " Check if the password is correct."
+            );
             throw new RuntimeException(e);
         }
     }

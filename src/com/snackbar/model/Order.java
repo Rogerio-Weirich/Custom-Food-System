@@ -1,6 +1,7 @@
 package com.snackbar.model;
 
 import com.snackbar.model.enums.OrderStatus;
+import com.snackbar.util.Icon;
 import com.snackbar.util.exception.InvalidItemException;
 import com.snackbar.util.exception.InvalidOrderStatusException;
 import com.snackbar.util.exception.OutOfStockException;
@@ -52,11 +53,18 @@ public class Order {
      */
     public void addProduct(Product product) {
         if (product == null) {
-            throw new InvalidItemException("Failed to add: The product provided is invalid or inexistent");
+            throw new InvalidItemException(
+                Icon.WARNING + "Failed to add: \nThe product provided is invalid or inexistent"
+
+            );
         }
 
         if (!product.isAvailable()) {
-            throw new OutOfStockException("The product: '" + product.getName() + "' is currently out of stock");
+            throw new OutOfStockException(
+                Icon.WARNING + 
+                "The product: '" + product.getName() + 
+                "' is currently out of stock"
+        );
         }
 
         this.items.add(product);
@@ -65,8 +73,11 @@ public class Order {
 
     public void setStatus(OrderStatus newStatus) {
         if (this.status == OrderStatus.DELIVERED || this.status == OrderStatus.CANCELED) {
-            throw new InvalidOrderStatusException("It's not possible to change the Order Status that is already" +
-                    this.status.getDescription());
+            throw new InvalidOrderStatusException(
+                Icon.WARNING +
+                "It's not possible to change the Order Status that is already" +
+                this.status.getDescription()
+                );
         }
         this.status = newStatus;
     }
@@ -87,7 +98,7 @@ public class Order {
         StringBuilder receipt = new StringBuilder();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         receipt.append("=========================================\n");
-        receipt.append("       🍔 CUSTOM FOOD RECEIPT 🍔        \n");
+        receipt.append("          CUSTOM FOOD RECEIPT            \n");
         receipt.append("=========================================\n");
         receipt.append(String.format("Order: #%s  | Status: %s\n", orderId, status.getDescription()));
         receipt.append(String.format("Customer: %s\n", customerName));

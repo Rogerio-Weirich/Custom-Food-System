@@ -1,6 +1,7 @@
 package com.snackbar.persistence;
 
 import com.snackbar.model.enums.Ingredient;
+import com.snackbar.util.Icon;
 import com.snackbar.model.Order;
 import com.snackbar.model.Product;
 
@@ -64,16 +65,24 @@ public class OrderDAO {
                     }
                 }
                 conn.commit();
-                System.out.println("Detailed order saved at DB.");
+                System.out.println(
+                    Icon.SAVE + 
+                    " Detailed order saved at DB."
+
+                );
             } catch (Exception e) {
                 conn.rollback();
                 System.err.println(
-                        "[ X ] Error to save Order. Transaction undone (Rollback). Error: " + e.getMessage()
+                        Icon.ERROR + 
+                        " Error to save Order. Transaction undone (Rollback). \nError: " + 
+                        e.getMessage()
                 );
             }
         } catch (Exception e) {
             System.err.println(
-                    "[ X ] Connection error with Database: " + e.getMessage()
+                    Icon.ERROR + 
+                    " Connection error with Database: " + 
+                    e.getMessage()
             );
         }
     }
