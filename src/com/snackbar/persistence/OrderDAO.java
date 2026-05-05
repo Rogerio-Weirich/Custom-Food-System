@@ -182,4 +182,28 @@ public class OrderDAO {
             );
         }
     }
+
+    public static int getPendingOrdersCount() {
+        String query = "SELECT COUNT(*) FROM orders WHERE status in ('PENDING', 'PREPARING')";
+
+        int count = 0;
+
+        try (Connection conn = DatabaseConnection.getConnection();
+            PreparedStatement statement = conn.prepareStatement(query);
+            ResultSet resultSet = statement.executeQuery()) {
+            
+            if (resultSet.next()) {
+                count = resultSet.getInt(1);
+            }
+
+        } catch (Exception e) {
+            System.err.println(
+                Icon.ERROR + 
+                "Error checking kitchen queries: " +
+                e.getMessage()
+            );
+        }
+        
+        return count;
+    }
 }

@@ -1,5 +1,6 @@
 package com.snackbar.presentation;
 
+import com.snackbar.persistence.OrderDAO;
 import com.snackbar.util.Icon;
 import com.snackbar.util.InputProvider;
 
@@ -27,6 +28,14 @@ public class MainMenuUI implements UserUI {
             System.out.println("0. Shut down system");
             System.out.println("===================================");
 
+            int queuedOrders = OrderDAO.getPendingOrdersCount();
+            System.out.println(
+                Icon.WARNING +
+                "System Status: " +
+                queuedOrders +
+                " orders in queue."
+            );
+            
             int choice = input.readInt("Please enter which Module to access: ");
 
             switch (choice) {
