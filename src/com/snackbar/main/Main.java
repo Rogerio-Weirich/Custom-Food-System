@@ -1,6 +1,6 @@
 package com.snackbar.main;
 
-import com.snackbar.presentation.ConsoleUI;
+import com.snackbar.presentation.MainMenuUI;
 import com.snackbar.presentation.UserUI;
 import com.snackbar.util.InputProvider;
 import com.snackbar.util.Icon;
@@ -14,8 +14,8 @@ public class Main {
         InputProvider input = new InputProvider();
 
         try {
-            UserUI ui = new ConsoleUI(input);
-            ui.start();
+            UserUI mainMenu = new MainMenuUI(input);
+            mainMenu.start();
         } catch (Exception e) {
             System.out.println("\n" + Icon.ERROR +
                     " FATAL ERROR: \n" + Icon.WARNING +

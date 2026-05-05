@@ -86,4 +86,100 @@ public class OrderDAO {
             );
         }
     }
+
+    public static void updateOrderStatus(int orderId, String newStatus) {
+        String updateSQL = "UPDATE orders SET status = ? WHERE id = ?";
+
+        try (Connection conn = DatabaseConnection.getConnection();
+            PreparedStatement statement = conn.prepareStatement(updateSQL)) {
+            
+            statement.setString(1, newStatus);
+            statement.setInt(2, orderId);
+
+            int rowsAffected = statement.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println(
+                    Icon.SAVE + 
+                    "Order Status #" + 
+                    orderId + 
+                    " updated to: " + 
+                    newStatus
+                );
+            } else {
+                System.out.println(
+                    Icon.WARNING + 
+                    "No order found with the ID #" + 
+                    orderId
+                );
+            }
+        } catch (Exception e) {
+            System.err.println(
+                Icon.ERROR + 
+                "Error updating order status: " + 
+                e.getMessage()
+            );
+        }
+    }
+
+    public static void displayActiveOrder() {
+        String queryOrders = "SELECT * FROM orders WHERE status IN ('PENDING', 'PREPARING')";
+        String queryItems = "SELECT * FROM order_items WHERE order_id = ?";
+
+        try (Connection conn = DatabaseConnection.getConnection();
+            PreparedStatement statementOrders = conn.prepareStatement(queryOrders);
+            ResultSet resultSetOrders = statementOrders.executeQuery()) {
+
+            boolean hasOrders = false;
+        
+            System.out.println("\n=======  ACTIVE ORDERS =======");
+
+            while (resultSetOrders.next()) {
+                hasOrders = true;
+                int orderId = resultSetOrders.getInt("id");
+                String customer = resultSetOrders.getString("customer_name");
+                String status = resultSetOrders.getString("status");
+
+                System.out.println(
+                    "\n[ ORDER #" + 
+                    orderId + 
+                    " ] - Customer " + 
+                    customer + 
+                    " | Current Status: " + 
+                    status
+                );
+                System.out.println("Pending: ");
+
+                try (PreparedStatement statementItems = conn.prepareStatement(queryItems)) {
+                    statementItems.setInt(1, orderId);
+                    try (ResultSet resultSetItems = statementItems.executeQuery()) {
+                        while (resultSetItems.next()) {
+                            String product = resultSetItems.getString("product_name");
+                            String type = resultSetItems.getString("product_type");
+                            String ingredient = resultSetItems.getString("ingredient_name");
+
+                            System.out.println(
+                                "  ->" + 
+                                product + 
+                                " (" + type + 
+                                ") | Extra/Ingredient: " + 
+                                ingredient    
+                            );
+                        }
+                    }
+                }
+            }
+
+            if (!hasOrders) {
+                System.out.println("No active orders.");
+            }
+
+        } catch (Exception e) {
+            System.err.println(
+                Icon.ERROR + 
+                "Error retrieving orders from the Kitchen: " + 
+                e.getMessage()
+            );
+        }
+    }
 }
