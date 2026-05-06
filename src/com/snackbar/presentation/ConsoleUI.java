@@ -31,7 +31,6 @@ public class ConsoleUI implements UserUI {
         }
 
         System.out.println("Thanks for using the Custom Food. Hope to see you soon!");
-        input.close();
     }
 
     private boolean showMainMenu() {
@@ -229,7 +228,7 @@ public class ConsoleUI implements UserUI {
             case 2: addToOrder(ProductFactory.createSubCombo()); break;
             case 3: addToOrder(ProductFactory.createWienerCombo()); break;
             case 4: addToOrder(ProductFactory.createServingCombo()); break;
-            case 5: addToOrder(ProductFactory.createKidsCombo());
+            case 5: addToOrder(ProductFactory.createKidsCombo()); break;
             case 0: return;
             default: System.out.println(Icon.ERROR + " Invalid Option.");
         }
