@@ -89,7 +89,7 @@ public class ConsoleUI implements UserUI {
             System.out.println("\n[ STEP 2 ] Select your Patty: ");
             offerSingleChoice(custom, Ingredient.filterByCategory("PATTY"));
             System.out.println("\n[ STEP 3 ] Select your Salad: ");
-            offerSingleChoice(custom, Ingredient.filterByCategory("SALAD"));
+            offerMultipleChoice(custom, Ingredient.filterByCategory("SALAD"));
             System.out.println("\n[ STEP 4 ] Select your Extras: ");
             offerExtras(custom, Ingredient.filterByCategory("EXTRAS"));
             addToOrder(custom);
@@ -114,7 +114,7 @@ public class ConsoleUI implements UserUI {
             System.out.println("\n[ STEP 2 ] Select your Meat: ");
             offerSingleChoice(custom, Ingredient.filterByCategory("MEAT"));
             System.out.println("\n[ STEP 3 ] Select your Salad: ");
-            offerSingleChoice(custom, Ingredient.filterByCategory("SALAD"));
+            offerMultipleChoice(custom, Ingredient.filterByCategory("SALAD"));
             System.out.println("\n[ STEP 4 ] Select your Extras: ");
             offerExtras(custom, Ingredient.filterByCategory("EXTRAS"));
             addToOrder(custom);
@@ -139,7 +139,7 @@ public class ConsoleUI implements UserUI {
             System.out.println("\n[ STEP 2 ] Select your Sausage: ");
             offerSingleChoice(custom, Ingredient.filterByCategory("SAUSAGE"));
             System.out.println("\n[ STEP 3 ] Select your Salad: ");
-            offerSingleChoice(custom, Ingredient.filterByCategory("SALAD"));
+            offerMultipleChoice(custom, Ingredient.filterByCategory("SALAD"));
             System.out.println("\n[ STEP 4 ] Select your Extras: ");
             offerExtras(custom, Ingredient.filterByCategory("EXTRAS"));
             addToOrder(custom);
@@ -257,6 +257,34 @@ public class ConsoleUI implements UserUI {
         }
     }
 
+    private void offerMultipleChoice(Product product, Ingredient[] options) {
+        while (true) {
+            for (int i = 0; i < options.length; i++) {
+                System.out.println((i + 1) + ". " + options[i]);
+            }
+
+            int choice = input.readInt("0. Proceed to Next Step\nSelect your ingredient: ");
+
+            if (choice == 0) {
+                break;
+            } else if (choice > 0 && choice <= options.length) {
+                Ingredient selected = options[choice - 1];
+                product.addIngredient(selected);
+                System.out.println(
+                    Icon.SUCCESS +
+                    " " +
+                    selected +
+                    " added!\n"
+                );
+            } else {
+                System.out.println(
+                    Icon.ERROR + 
+                    " Invalid Option. \n"
+                );
+            }
+        }
+    }
+
     private void offerExtras(Product product, Ingredient[] options) {
         if (options.length == 0) return;
 
@@ -282,7 +310,7 @@ public class ConsoleUI implements UserUI {
                     " added!"
                 );
             } else {
-                System.out.println(Icon.ERROR + " Invalid Option. ");
+                System.out.println(Icon.ERROR + " Invalid Option. \n");
             }
         }
     }
