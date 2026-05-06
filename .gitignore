@@ -1,3 +1,6 @@
+# --- Environment Variable ---
+.env
+
 # --- IDEs ---
 .idea/
 .vscode/
@@ -5,22 +8,21 @@
 *.iws
 *.ipr
 
-# --- Compilação e Build ---
+# --- Build and Compilers ---
 out/
 bin/
 target/
 build/
 
-# --- Bibliotecas e Dependências ---
-# Se você estiver usando o VS Code, ele pode criar uma pasta lib.
-# Se for usar Maven ou Gradle no futuro, as dependências ficam no repositório local, não no projeto.
+# --- Library and Dependencies ---
 lib/
 receipts/
 *.jar
 
-# --- Arquivos do Sistema Operacional ---
+# --- Operational System Files ---
 .DS_Store
 Thumbs.db
 
 # --- Logs ---
 *.log
+
