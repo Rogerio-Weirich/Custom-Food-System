@@ -68,7 +68,7 @@ public class Order {
         }
 
         this.items.add(product);
-        product.decreaseStock(1);
+        product.decreaseStock();
     }
 
     public void setStatus(OrderStatus newStatus) {
