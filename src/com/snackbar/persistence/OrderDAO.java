@@ -37,9 +37,7 @@ public class OrderDAO {
                     try (PreparedStatement itemStatement = conn.prepareStatement(insertItemSQL)) {
                         for (Product product : order.getItems()) {
                             if (product.getAddons() != null && !product.getAddons().isEmpty()) {
-                                for (Object addonObject : product.getAddons()) {
-                                    Ingredient ingredient = (Ingredient) addonObject;
-
+                                for (Ingredient ingredient : product.getAddons()) {
                                     itemStatement.setInt(1, dbOrderId);
                                     itemStatement.setString(2, product.getName());
                                     itemStatement.setDouble(3, product.getBasePrice());
@@ -64,6 +62,7 @@ public class OrderDAO {
                         itemStatement.executeBatch();
                     }
                 }
+
                 conn.commit();
                 System.out.println(
                     Icon.SAVE + 
