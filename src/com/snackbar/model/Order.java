@@ -77,14 +77,25 @@ public class Order {
                 Icon.WARNING +
                 "It's not possible to change the Order Status that is already" +
                 this.status.getDescription()
-                );
+            );
         }
+
+        boolean valid = switch (this.status) {
+            case PENDING   -> newStatus == OrderStatus.PREPARING || newStatus == OrderStatus.CANCELED;
+            case PREPARING -> newStatus == OrderStatus.READY     || newStatus == OrderStatus.CANCELED;
+            case READY     -> newStatus == OrderStatus.DELIVERED || newStatus == OrderStatus.CANCELED;
+            default -> false;
+        };
+
+        if (!valid) throw new InvalidOrderStatusException(
+            "Invalid transaction: " +
+            this.status +
+            " -> " +
+            newStatus
+        );
         this.status = newStatus;
     }
 
-    /**
-     * Calculates the total price of all order items
-     */
     public double calculateTotalOrder() {
         return items.stream()
                    .mapToDouble(Product::calculateFinalPrice)
