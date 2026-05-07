@@ -1,6 +1,7 @@
 package com.snackbar.model;
 
 import com.snackbar.model.enums.Ingredient;
+import com.snackbar.persistence.ProductDAO;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,16 +13,14 @@ public abstract class Product {
     private String name;
     private double basePrice;
     private String description;
-    private int stockQuantity;
 
     protected final List<Ingredient> addons;
 
-    public Product(String name, double basePrice, String description, int initialStock) {
+    public Product(String name, String description) {
         this.id = UUID.randomUUID().toString(); //random unique ID
         this.name = name;
-        this.basePrice = basePrice;
+        this.basePrice = ProductDAO.getPrice(name);
         this.description = description;
-        this.stockQuantity = initialStock;
         this.addons = new ArrayList<>();
     }
 
@@ -42,10 +41,6 @@ public abstract class Product {
         return description;
     }
 
-    public int getStockQuantity() {
-        return stockQuantity;
-    }
-
     public List<Ingredient> getAddons() {
         return Collections.unmodifiableList(addons);
     }
@@ -61,14 +56,14 @@ public abstract class Product {
 
     // Stcok management
     public boolean isAvailable() {
-        return stockQuantity > 0;
+        return ProductDAO.isAvailable(name);
     }
 
-    public void decreaseStock(int quantity) {
-        if (quantity > 0 && quantity <= stockQuantity) {
-            stockQuantity -= quantity;
-        }
+    public void decreaseStock() {
+        ProductDAO.decreaseRecipeStock(name);
+        ProductDAO.decreaseAddonsStock(addons);
     }
+    
 
     protected double calculateAddonsPrice() {
         return addons.stream()
