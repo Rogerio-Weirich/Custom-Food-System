@@ -1,4 +1,4 @@
-INSERT INTO products (name, category, base_prce, stock) VALUES
+INSERT INTO products (name, category, base_price, stock) VALUES
 ("Classic Hamburger",    "BRGR",  5.00, 50),
 ("Custom Hamburger",     "BRGR",  5.00, 50),
 ("Classic Sandwich",     "SAND",  4.00, 50),
@@ -24,7 +24,7 @@ INSERT INTO products (name, category, base_prce, stock) VALUES
 ("Serving Combo",        "CMBO",  0.00, 35),
 ("Kids Combo",           "CMBO",  0.00, 30);
 
-INSERT INTO ingredients (name, category, price) VALUES ();
+INSERT INTO ingredients (name, category, price) VALUES
 -- Bun
 ("Potato",               "BBRG",  2.50),
 ("Pretzel",              "BBRG",  3.00),
@@ -115,4 +115,4 @@ INSERT INTO ingredients (name, category, price) VALUES ();
 ("Lemon Slice",          "XBEV",  0.50),
 ("Mint Leaves",          "XBEV",  0.50),
 ("Vanilla Flavor Syrup", "XBEV",  2.00),
-("Caramel Flavor Syrup", "XBEV",  2.00),
+("Caramel Flavor Syrup", "XBEV",  2.00);
