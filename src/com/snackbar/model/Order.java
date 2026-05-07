@@ -22,7 +22,7 @@ public class Order {
 
     public Order(String customerName) {
         // Generates a short ID with 6 char to simulate a panel's password
-        this.orderId = UUID.randomUUID().toString().substring(0, 6).toUpperCase();
+        this.orderId = UUID.randomUUID().toString().substring(0, 8).toUpperCase();
         this.customerName = customerName;
         this.items = new ArrayList<>();
         this.status = OrderStatus.PENDING;
