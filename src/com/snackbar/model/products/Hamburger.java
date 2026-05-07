@@ -3,8 +3,8 @@ package com.snackbar.model.products;
 import com.snackbar.model.Product;
 
 public class Hamburger extends Product {
-    public Hamburger(String name, double basePrice, String description, int initialStock) {
-        super(name, basePrice, description, initialStock);
+    public Hamburger(String name, String description) {
+        super(name, description);
     }
 
     /**

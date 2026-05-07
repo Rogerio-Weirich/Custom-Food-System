@@ -3,8 +3,8 @@ package com.snackbar.model.products;
 import com.snackbar.model.Product;
 
 public class Wiener extends Product {
-    public Wiener(String name, double basePrice, String description, int initialStock) {
-        super(name, basePrice, description, initialStock);
+    public Wiener(String name, String description) {
+        super(name, description);
     }
 
     @Override

@@ -13,8 +13,8 @@ public class Combo extends Product {
      *  Combo class constructor
      * @param discountPercentage Decimal Value representing the discount (e.g., 0.10 = 10%)
      */
-    public Combo(String name, String description, double discountPercentage, int initialStock) {
-        super(name, 0.0, description, initialStock);
+    public Combo(String name, String description, double discountPercentage) {
+        super(name, description);
         this.items = new ArrayList<>();
         this.discountPercentage = discountPercentage;
     }
