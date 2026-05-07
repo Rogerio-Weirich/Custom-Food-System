@@ -16,6 +16,7 @@ public class ConsoleUI implements UserUI {
         this.input = input;
     }
 
+    @Override
     public void start() {
         System.out.println("=========================================\n");
         System.out.println("               CUSTOM FOOD               \n");
@@ -209,7 +210,7 @@ public class ConsoleUI implements UserUI {
             default: System.out.println(Icon.ERROR + " Invalid Option."); return;
         }
 
-        offerExtras(dessert, Ingredient.filterByCategory("DESSERT"));
+        offerExtras(dessert, Ingredient.filterByCategory("DES_EXTRA"));
         addToOrder(dessert);
     }
 
