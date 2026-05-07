@@ -7,131 +7,120 @@ public class ProductFactory {
 
     public static Hamburger createClassicBurger() {
         return new Hamburger(
-                "Classic Hamburger", Ingredient.PRICE_CLASSIC_BURGER.getPrice(),
-                "Bun, Patty and Cheese", 50
+                "Classic Hamburger",
+                "Bun, Patty and Cheese"
         );
     }
 
     public static Hamburger createCustomBurger() {
         return new Hamburger(
-                "Custom Burger", Ingredient.PRICE_CUSTOM_BURGER.getPrice(),
-                "Build your own", 50
+                "Custom Burger",
+                "Build your own"
         );
     }
 
     public static Sandwich createClassicSub() {
         return new Sandwich(
-                "Classic Sandwich", Ingredient.PRICE_CLASSIC_SUB.getPrice(),
-                "Baguette, Salad", 50
+                "Classic Sandwich",
+                "Baguette, Salad"
         );
     }
 
     public static Sandwich createCustomSub() {
         return new Sandwich(
-                "Custom Sandwich", Ingredient.PRICE_CUSTOM_SUB.getPrice(),
-                "Build your own: ", 50
+                "Custom Sandwich",
+                "Build your own: "
         );
     }
 
     public static Wiener createClassicWiener() {
         return new Wiener(
-                "Classic Wiener", Ingredient.PRICE_CLASSIC_WIENER.getPrice(),
-                "Traditional Hot-Dog", 50
+                "Classic Wiener",
+                "Traditional Hot-Dog"
         );
     }
 
     public static Wiener createCustomWiener() {
         return new Wiener(
-                "Custom Wiener", Ingredient.PRICE_CUSTOM_WIENER.getPrice(),
-                "Build your own", 50
+                "Custom Wiener",
+                "Build your own"
         );
     }
 
     public static Side createFries() {
         return new Side(
                 Ingredient.FRENCH_FRIES.getDisplayName(),
-                Ingredient.FRENCH_FRIES.getPrice(),
-                "Crunchy and Salty Fries", 50
+                "Crunchy and Salty Fries"
         );
     }
 
     public static Side createOnionRings() {
         return new Side(
                 Ingredient.ONION_RINGS.getDisplayName(),
-                Ingredient.ONION_RINGS.getPrice(),
-                "Crunchy onion rings", 50
+                "Crunchy onion rings"
         );
     }
 
     public static Side createNuggets() {
         return new Side(
                 Ingredient.NUGGETS.getDisplayName(),
-                Ingredient.NUGGETS.getPrice(),
-                "Breaded and spicy", 50
+                "Breaded and spicy"
         );
     }
 
     public static Side createCheeseSticks() {
         return new Side(
-                Ingredient.CHEESE_STICKS.getDisplayName(),
-                Ingredient.CHEESE_STICKS.getPrice(),
-                "Fried Cheese Sticks", 50
+                Ingredient.MOZZARELLA_STICKS.getDisplayName(),
+                "Fried Cheese Sticks"
         );
     }
 
     public static Beverage createSoda() {
         return new Beverage(
                 Ingredient.SODA_500ML.getDisplayName(),
-                Ingredient.SODA_500ML.getPrice(),
-                "Soda Cup", 100
+                "Soda Cup"
         );
     }
 
     public static Beverage createJuice() {
         return new Beverage(
                 Ingredient.NAT_JUICE.getDisplayName(),
-                Ingredient.NAT_JUICE.getPrice(),
-                "Fresh seasonal fruit juice", 80
+                "Fresh seasonal fruit juice"
         );
     }
 
     public static Beverage createCustomBeverage() {
         return new Beverage(
                 Ingredient.DRINK.getDisplayName(),
-                Ingredient.PRICE_CUSTOM_BEVERAGE.getPrice(),
-                "Build your own \nChoose your drink and add-ons: ", 100
+                "Build your own \nChoose your drink and add-ons: "
         );
     }
 
     public static Dessert createCookie() {
         return new Dessert(
                 Ingredient.CHOC_COOKIE.getDisplayName(),
-                Ingredient.CHOC_COOKIE.getPrice(),
-                "Chocolate Chip Cookie", 150
+                "Chocolate Chip Cookie"
         );
     }
 
     public static Dessert createBrownie() {
         return new Dessert(
                 Ingredient.CHOC_BROWNIE.getDisplayName(),
-                Ingredient.CHOC_BROWNIE.getPrice(),
-                "Warm chocolate brownie", 40
+                "Warm chocolate brownie"
         );
     }
 
     public static Dessert createIceCream() {
         return new Dessert(
-                Ingredient.ICE_CREAM_SCOOP.getDisplayName(),
-                Ingredient.ICE_CREAM_SCOOP.getPrice(),
-                "Simple Vanilla Ice Cream", 50
+                Ingredient.ICE_CREAM_CUP.getDisplayName(),
+                "Simple Vanilla Ice Cream"
         );
     }
 
     public static Dessert createCustomIceCream() {
         return new Dessert(
                 "Custom Ice Cream Cup",
-                Ingredient.PRICE_CUSTOM_ICE_CREAM.getPrice(),
-                "A Cup with 2 Scoops. \nChoose your toppings: ", 50
+                "A Cup with 2 Scoops. \nChoose your toppings: "
         );
     }
 
@@ -139,7 +128,7 @@ public class ProductFactory {
         Combo combo = new Combo(
                 "Hamburger Combo",
                 "Classic Burger + Fries + Soda (15% OFF)",
-                0.15, 30
+                0.15
         );
 
         combo.addItem(createClassicBurger());
@@ -152,7 +141,7 @@ public class ProductFactory {
         Combo combo = new Combo(
                 "Sandwich Combo",
                 "Classic Sandwich + Nuggets + Natural Juice (10% OFF)",
-                0.10, 30
+                0.10
         );
 
         combo.addItem(createClassicSub());
@@ -165,7 +154,7 @@ public class ProductFactory {
         Combo combo = new Combo(
                 "Wiener Combo",
                 "Classic Hot-Dog + Onion Rings + Soda (12% OFF)",
-                0.12, 30
+                0.12
         );
 
         combo.addItem(createClassicWiener());
@@ -178,7 +167,7 @@ public class ProductFactory {
         Combo combo = new Combo(
                 "Serving Combo",
                 "Fries + Onion Rings + Nuggets + Cheese Sticks (20% OFF)",
-                0.20, 45
+                0.20
         );
 
         combo.addItem(createFries());
@@ -192,7 +181,7 @@ public class ProductFactory {
         Combo combo = new Combo(
                 "Kids Combo",
                 "Nuggets + Juice + Brownie (10% OFF)",
-                0.10, 30
+                0.10
         );
 
         combo.addItem(createNuggets());
