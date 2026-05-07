@@ -22,7 +22,10 @@ public enum Icon {
 
     private final String symbol;
     private final String fallback;
-    public static boolean useEmojis;
+    private static boolean useEmojis;
+
+    public static void setUseEmojis(boolean value) {useEmojis = value;}
+    public static boolean isUsingEmojis() {return useEmojis;}
 
     Icon(String symbol, String fallback) {
         this.symbol = symbol;

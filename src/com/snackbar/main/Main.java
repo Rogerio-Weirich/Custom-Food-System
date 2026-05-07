@@ -8,10 +8,11 @@ import com.snackbar.util.Icon;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(Icon.SYSTEM + " Initializing operation modules...\n");
-        
-        Icon.useEmojis = false;
         InputProvider input = new InputProvider();
+        
+        Icon.setUseEmojis(input.readBoolean("Use Icons? "));
+        
+        System.out.println(Icon.SYSTEM + " Initializing operation modules...\n");
 
         try {
             UserUI mainMenu = new MainMenuUI(input);
