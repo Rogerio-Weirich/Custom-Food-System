@@ -315,7 +315,7 @@ public class ConsoleUI implements UserUI {
     private void offerExtras(Product product, Ingredient[] options) {
         if (options.length == 0) return;
 
-        boolean addingExtras = input.readBoolean("Add Extras | Customize? ");
+        boolean addingExtras = input.readBoolean("Customize? ");
 
         while (addingExtras) {
             System.out.println("\nAvailable Options: ");
@@ -323,7 +323,7 @@ public class ConsoleUI implements UserUI {
                 System.out.println((i + 1) + ". " + options[i]);
             }
 
-            int extraChoice = input.readInt("0. Exit and Finish Customization\nSelect the extra: ");
+            int extraChoice = input.readInt("0. Proceed to Next Step\nSelect Option: ");
 
             if (extraChoice == 0) {
                 addingExtras = false;
