@@ -70,7 +70,7 @@ public class InputProvider {
                 return false;
             } else {
                 System.out.println(
-                    Icon.ERROR + "Invalid option.\n Type 'Y' to Yes and 'N' to No"
+                    Icon.ERROR + " Invalid option.\n Type 'Y' to Yes and 'N' to No"
 
                 );
             }
