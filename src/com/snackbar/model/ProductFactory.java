@@ -126,7 +126,7 @@ public class ProductFactory {
 
     public static Dessert createCustomIceCream() {
         return new Dessert(
-                "Custom Ice Cream Cup",
+                Ingredient.CUSTOM_ICE_CREAM.getDisplayName(),
                 "A Cup with 2 Scoops. \nChoose your toppings: "
         );
     }
