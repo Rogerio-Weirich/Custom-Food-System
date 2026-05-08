@@ -1,6 +1,7 @@
 package com.snackbar.model.enums;
 
 import java.util.Arrays;
+import java.util.List;
 
 import com.snackbar.persistence.IngredientDAO;
 
@@ -146,6 +147,13 @@ public enum Ingredient {
         return Arrays.stream(values())
                      .filter(i -> i.category.equalsIgnoreCase(cat))
                      .toArray(Ingredient[]::new);
+    }
+
+    public static Ingredient[] filterByCategories(String... cats) {
+        List<String> catList = Arrays.asList(cats);
+        return Arrays.stream(values())
+                 .filter(i -> catList.contains(i.getCategory()))
+                 .toArray(Ingredient[]::new);
     }
 
     /**
