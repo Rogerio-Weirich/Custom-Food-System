@@ -4,6 +4,7 @@ SELECT * FROM orders;
 SELECT * FROM order_items;
 SELECT * FROM products;
 SELECT * FROM ingredients;
+SELECT * FROM product_recipes;
 SELECT * FROM vw_available_products;
 SELECT * FROM vw_ingredient_catalog;
 SELECT * FROM vw_order_receipt;
