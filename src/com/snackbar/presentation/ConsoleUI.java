@@ -24,14 +24,22 @@ public class ConsoleUI implements UserUI {
 
         String customerName = input.readString("Please, enter your name to begin: ");
         currentOrder = new Order(customerName);
-        System.out.println("Hello, " + customerName + "! Order #" + currentOrder.getOrderId() + " opened successfully");
+        System.out.println(
+            "Hello, " + 
+            customerName + 
+            "! Order #" + 
+            currentOrder.getOrderId() + 
+            " opened successfully"
+        );
 
         boolean running = true;
         while (running) {
             running = showMainMenu();
         }
 
-        System.out.println("Thanks for using the Custom Food. Hope to see you soon!");
+        System.out.println(
+            "Thanks for using the Custom Food. Hope to see you soon!"
+        );
     }
 
     private boolean showMainMenu() {
@@ -86,13 +94,17 @@ public class ConsoleUI implements UserUI {
         } else if (type == 2) {
             Hamburger custom = ProductFactory.createCustomBurger();
             System.out.println("\n[ STEP 1 ] Select your Bun: ");
-            offerSingleChoice(custom, Ingredient.filterByCategory("BUN"));
+            offerSingleChoice(custom, Ingredient.filterByCategory("BBRG"));
             System.out.println("\n[ STEP 2 ] Select your Patty: ");
-            offerSingleChoice(custom, Ingredient.filterByCategory("PATTY"));
+            offerSingleChoice(custom, Ingredient.filterByCategory("PTTY"));
             System.out.println("\n[ STEP 3 ] Select your Salad: ");
-            offerMultipleChoice(custom, Ingredient.filterByCategory("SALAD"));
-            System.out.println("\n[ STEP 4 ] Select your Extras: ");
-            offerExtras(custom, Ingredient.filterByCategory("EXTRAS"));
+            offerMultipleChoice(custom, Ingredient.filterByCategory("SALD"));
+            System.out.println("\n[ STEP 4 ] Select your Cheese: ");
+            offerExtras(custom, Ingredient.filterByCategory("CHSE"));
+            System.out.println("\n[ STEP 5 ] Selecet your Sauce: ");
+            offerExtras(custom, Ingredient.filterByCategory("SAUC"));
+            System.out.println("\n[ STEP 6 ] Select your Extras: ");
+            offerExtras(custom, Ingredient.filterByCategories("XBRG", "XTRA"));
             addToOrder(custom);
         }
     }
@@ -111,13 +123,17 @@ public class ConsoleUI implements UserUI {
         } else if (type == 2) {
             Sandwich custom = ProductFactory.createCustomSub();
             System.out.println("\n[ STEP 1 ] Select your Bun: ");
-            offerSingleChoice(custom, Ingredient.filterByCategory("BUN"));
+            offerSingleChoice(custom, Ingredient.filterByCategory("BSND"));
             System.out.println("\n[ STEP 2 ] Select your Meat: ");
-            offerSingleChoice(custom, Ingredient.filterByCategory("MEAT"));
+            offerSingleChoice(custom, Ingredient.filterByCategory("SAND"));
             System.out.println("\n[ STEP 3 ] Select your Salad: ");
-            offerMultipleChoice(custom, Ingredient.filterByCategory("SALAD"));
-            System.out.println("\n[ STEP 4 ] Select your Extras: ");
-            offerExtras(custom, Ingredient.filterByCategory("EXTRAS"));
+            offerMultipleChoice(custom, Ingredient.filterByCategory("SALD"));
+            System.out.println("\n[ STEP 4 ] Select your Cheese: ");
+            offerExtras(custom, Ingredient.filterByCategory("CHSE"));
+            System.out.println("\n[ STEP 5 ] Selecet your Sauce: ");
+            offerExtras(custom, Ingredient.filterByCategory("SAUC"));
+            System.out.println("\n[ STEP 6 ] Select your Extras: ");
+            offerExtras(custom, Ingredient.filterByCategories("XSND", "XTRA"));
             addToOrder(custom);
         }
     }
@@ -136,23 +152,27 @@ public class ConsoleUI implements UserUI {
         } else if (type == 2) {
             Wiener custom = ProductFactory.createCustomWiener();
             System.out.println("\n[ STEP 1 ] Select your Bun: ");
-            offerSingleChoice(custom, Ingredient.filterByCategory("BUN"));
+            offerSingleChoice(custom, Ingredient.filterByCategory("BWNE"));
             System.out.println("\n[ STEP 2 ] Select your Sausage: ");
-            offerSingleChoice(custom, Ingredient.filterByCategory("SAUSAGE"));
+            offerSingleChoice(custom, Ingredient.filterByCategory("SAUS"));
             System.out.println("\n[ STEP 3 ] Select your Salad: ");
-            offerMultipleChoice(custom, Ingredient.filterByCategory("SALAD"));
-            System.out.println("\n[ STEP 4 ] Select your Extras: ");
-            offerExtras(custom, Ingredient.filterByCategory("EXTRAS"));
+            offerMultipleChoice(custom, Ingredient.filterByCategory("SALD"));
+            System.out.println("\n[ STEP 4 ] Select your Cheese: ");
+            offerExtras(custom, Ingredient.filterByCategory("CHSE"));
+            System.out.println("\n[ STEP 5 ] Selecet your Sauce: ");
+            offerExtras(custom, Ingredient.filterByCategory("SAUC"));
+            System.out.println("\n[ STEP 6 ] Select your Extras: ");
+            offerExtras(custom, Ingredient.filterByCategories("BWNE", "XTRA"));
             addToOrder(custom);
         }
     }
 
     private void buildSide() {
         System.out.println("\n--- SIDE ---");
-        System.out.println("1. French Fries");
-        System.out.println("2. Onion Rings");
-        System.out.println("3. Nuggets");
-        System.out.println("4. Cheese Sticks");
+        System.out.println("1. " + Ingredient.FRENCH_FRIES.getDisplayName());
+        System.out.println("2. " + Ingredient.ONION_RINGS.getDisplayName());
+        System.out.println("3. " + Ingredient.NUGGETS.getDisplayName());
+        System.out.println("4. " + Ingredient.MOZZARELLA_STICKS.getDisplayName());
         System.out.println("0. Back");
         int type = input.readInt("Option: ");
 
@@ -166,37 +186,43 @@ public class ConsoleUI implements UserUI {
             default: System.out.println(Icon.ERROR + " Invalid Option."); return;
         }
 
-        offerExtras(side, Ingredient.filterByCategory("SAUCE"));
+        if (type == 3 || type == 4) {
+            offerExtras(side, Ingredient.filterByCategories("SAUC", "CHSE"));
+        } else {
+            offerExtras(side, Ingredient.filterByCategory("SAUC"));
+        }
         addToOrder(side);
     }
 
     private void buildBeverage() {
         System.out.println("\n--- Beverages ---");
-        System.out.println("1. Soda");
-        System.out.println("2. Natural Juice");
-        System.out.println("3. Custom Drink");
+        System.out.println("1. " + Ingredient.SODA_350ML.getDisplayName());
+        System.out.println("2. " + Ingredient.SODA_500ML.getDisplayName());
+        System.out.println("3. " + Ingredient.NAT_JUICE.getDisplayName());
+        System.out.println("4. " + Ingredient.DRINK.getDisplayName());
         System.out.println("0. Back");
         int type = input.readInt("Option: ");
 
         Beverage bev = null;
         switch (type) {
-            case 1: bev = ProductFactory.createSoda(); break;
-            case 2: bev = ProductFactory.createJuice(); break;
-            case 3: bev = ProductFactory.createCustomBeverage(); break;
+            case 1: bev = ProductFactory.createSoda350(); break;
+            case 2: bev = ProductFactory.createSoda500(); break;
+            case 3: bev = ProductFactory.createJuice(); break;
+            case 4: bev = ProductFactory.createCustomBeverage(); break;
             case 0: return;
             default: System.out.println(Icon.ERROR + " Invalid Option."); return;
         }
 
-        offerExtras(bev, Ingredient.filterByCategory("BEV_EXTRA"));
+        offerExtras(bev, Ingredient.filterByCategory("XBEV"));
         addToOrder(bev);
     }
 
     private void buildDessert() {
         System.out.println("\n--- Desserts ---");
-        System.out.println("1. Brownie");
-        System.out.println("2. Chocolate Cookie");
-        System.out.println("3. Ice Cream Cup");
-        System.out.println("4. Custom Ice Cream");
+        System.out.println("1. " + Ingredient.CHOC_BROWNIE.getDisplayName());
+        System.out.println("2. " + Ingredient.CHOC_COOKIE.getDisplayName());
+        System.out.println("3. " + Ingredient.ICE_CREAM_CUP.getDisplayName());
+        System.out.println("4. " + Ingredient.CUSTOM_ICE_CREAM.getDisplayName());
         System.out.println("0. Back");
         int type = input.readInt("Options: ");
 
@@ -210,7 +236,7 @@ public class ConsoleUI implements UserUI {
             default: System.out.println(Icon.ERROR + " Invalid Option."); return;
         }
 
-        offerExtras(dessert, Ingredient.filterByCategory("DES_EXTRA"));
+        offerExtras(dessert, Ingredient.filterByCategory("XDES"));
         addToOrder(dessert);
     }
 
