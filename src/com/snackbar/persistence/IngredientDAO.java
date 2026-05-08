@@ -64,7 +64,7 @@ public class IngredientDAO {
             if (rows == 0) {
                 System.err.println(
                     Icon.WARNING +
-                    " Insuficiente stock for ingredient: " +
+                    " Insufficient stock for ingredient: " +
                     ingredientName
                 );
             }
