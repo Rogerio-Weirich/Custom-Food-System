@@ -190,7 +190,7 @@ public class OrderDAO {
     }
 
     public static int getPendingOrdersCount() {
-        String query = "SELECT COUNT(*) FROM orders WHERE status in ('PENDING', 'PREPARING', 'READY')";
+        String query = "SELECT COUNT(*) FROM orders WHERE status in ('?', '?', '?')";
 
         int count = 0;
 
