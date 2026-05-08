@@ -67,7 +67,7 @@ public class ConsoleUI implements UserUI {
             case 7: buildCombo(); break;
             case 8: System.out.println(currentOrder.generateReceipt()); break;
             case 0:
-                System.out.println(Icon.SAVE + "Processing your order... ");
+                System.out.println(Icon.SAVE + " Processing your order... ");
                 System.out.println(currentOrder.generateReceipt());
                 DataPersistence.saveReceiptToFile(currentOrder);
                 OrderDAO.saveOrderToDatabase(currentOrder);
@@ -89,7 +89,7 @@ public class ConsoleUI implements UserUI {
 
         if (type == 1) {
             Hamburger hamburger = ProductFactory.createClassicBurger();
-            offerExtras(hamburger, Ingredient.filterByCategory("EXTRAS"));
+            offerExtras(hamburger, Ingredient.filterByCategory("XTRA"));
             addToOrder(hamburger);
         } else if (type == 2) {
             Hamburger custom = ProductFactory.createCustomBurger();
@@ -101,7 +101,7 @@ public class ConsoleUI implements UserUI {
             offerMultipleChoice(custom, Ingredient.filterByCategory("SALD"));
             System.out.println("\n[ STEP 4 ] Select your Cheese: ");
             offerExtras(custom, Ingredient.filterByCategory("CHSE"));
-            System.out.println("\n[ STEP 5 ] Selecet your Sauce: ");
+            System.out.println("\n[ STEP 5 ] Select your Sauce: ");
             offerExtras(custom, Ingredient.filterByCategory("SAUC"));
             System.out.println("\n[ STEP 6 ] Select your Extras: ");
             offerExtras(custom, Ingredient.filterByCategories("XBRG", "XTRA"));
@@ -118,19 +118,19 @@ public class ConsoleUI implements UserUI {
 
         if (type == 1) {
             Sandwich sandwich = ProductFactory.createClassicSub();
-            offerExtras(sandwich, Ingredient.filterByCategory("EXTRAS"));
+            offerExtras(sandwich, Ingredient.filterByCategory("XTRA"));
             addToOrder(sandwich);
         } else if (type == 2) {
             Sandwich custom = ProductFactory.createCustomSub();
             System.out.println("\n[ STEP 1 ] Select your Bun: ");
             offerSingleChoice(custom, Ingredient.filterByCategory("BSND"));
             System.out.println("\n[ STEP 2 ] Select your Meat: ");
-            offerSingleChoice(custom, Ingredient.filterByCategory("SAND"));
+            offerSingleChoice(custom, Ingredient.filterByCategory("MEAT"));
             System.out.println("\n[ STEP 3 ] Select your Salad: ");
             offerMultipleChoice(custom, Ingredient.filterByCategory("SALD"));
             System.out.println("\n[ STEP 4 ] Select your Cheese: ");
             offerExtras(custom, Ingredient.filterByCategory("CHSE"));
-            System.out.println("\n[ STEP 5 ] Selecet your Sauce: ");
+            System.out.println("\n[ STEP 5 ] Select your Sauce: ");
             offerExtras(custom, Ingredient.filterByCategory("SAUC"));
             System.out.println("\n[ STEP 6 ] Select your Extras: ");
             offerExtras(custom, Ingredient.filterByCategories("XSND", "XTRA"));
@@ -147,7 +147,7 @@ public class ConsoleUI implements UserUI {
 
         if (type == 1) {
             Wiener wiener = ProductFactory.createClassicWiener();
-            offerExtras(wiener, Ingredient.filterByCategory("EXTRAS"));
+            offerExtras(wiener, Ingredient.filterByCategory("XTRA"));
             addToOrder(wiener);
         } else if (type == 2) {
             Wiener custom = ProductFactory.createCustomWiener();
@@ -159,10 +159,10 @@ public class ConsoleUI implements UserUI {
             offerMultipleChoice(custom, Ingredient.filterByCategory("SALD"));
             System.out.println("\n[ STEP 4 ] Select your Cheese: ");
             offerExtras(custom, Ingredient.filterByCategory("CHSE"));
-            System.out.println("\n[ STEP 5 ] Selecet your Sauce: ");
+            System.out.println("\n[ STEP 5 ] Select your Sauce: ");
             offerExtras(custom, Ingredient.filterByCategory("SAUC"));
             System.out.println("\n[ STEP 6 ] Select your Extras: ");
-            offerExtras(custom, Ingredient.filterByCategories("BWNE", "XTRA"));
+            offerExtras(custom, Ingredient.filterByCategories("XWNE", "XTRA"));
             addToOrder(custom);
         }
     }
