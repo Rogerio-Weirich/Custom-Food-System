@@ -42,7 +42,7 @@ public class ProductDAO {
             PreparedStatement statement = conn.prepareStatement(sql)) {
             statement.setString(1, productName);
             try (ResultSet resultSet = statement.executeQuery()) {
-                
+
                 if (!resultSet.isBeforeFirst()) return true;
 
                 while (resultSet.next()) {
@@ -65,7 +65,7 @@ public class ProductDAO {
         String sql = """
                 SELECT i.name, pr.quantity
                 FROM product_recipes pr
-                JOIN ingredients i ON pr.igredient_id = i.id
+                JOIN ingredients i ON pr.ingredient_id = i.id
                 JOIN products p ON pr.product_id = p.id
                 WHERE p.name = ?
                 """;
