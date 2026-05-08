@@ -101,7 +101,7 @@ INSERT INTO ingredients (name, category, price, stock) VALUES
 ("Ketchup",              "SAUC",  0.10, 200),
 ("Mayonnaise",           "SAUC",  0.10, 200),
 ("Mustard",              "SAUC",  0.10, 200),
-("Spicy Saude",          "SAUC",  0.50, 200),
+("Spicy Sauce",          "SAUC",  0.50, 200),
 -- Beverage
 ("Soda 350ml",            "BEVG",  5.00, 50),
 ("Soda 500ml",            "BEVG",  7.00, 50),
@@ -113,3 +113,72 @@ INSERT INTO ingredients (name, category, price, stock) VALUES
 ("Mint Leaves",          "XBEV",  0.50, 150),
 ("Vanilla Flavor Syrup", "XBEV",  2.00, 150),
 ("Caramel Flavor Syrup", "XBEV",  2.00, 150);
+
+-- Classic Hamburger (id=1) 
+INSERT INTO product_recipes (product_id, ingredient_id, quantity) VALUES
+(1, 1,  1),   -- Potato Bun
+(1, 10, 1),   -- Beef Patty
+(1, 52, 1),   -- American Cheese
+(1, 30, 1),   -- Lettuce
+(1, 31, 1),   -- Sliced Tomato
+(1, 71, 1);   -- Ketchup
+
+-- Classic Sandwich (id=3) 
+INSERT INTO product_recipes (product_id, ingredient_id, quantity) VALUES
+(3, 4,  1),   -- Baguette
+(3, 14, 1),   -- Chicken Breast
+(3, 30, 1),   -- Lettuce
+(3, 31, 1),   -- Sliced Tomato
+(3, 28, 1),   -- Diced Onion
+(3, 72, 1);   -- Mayonnaise
+
+-- Classic Wiener (id=5)
+INSERT INTO product_recipes (product_id, ingredient_id, quantity) VALUES
+(5, 7,  1),   -- Bakery Bun
+(5, 19, 1),   -- Pork Sausage
+(5, 73, 1),   -- Mustard
+(5, 71, 1);   -- Ketchup
+
+-- Hamburger Combo (id=7)
+INSERT INTO product_recipes (product_id, ingredient_id, quantity) VALUES
+(7, 1,  1),   -- Potato Bun
+(7, 10, 1),   -- Beef Patty
+(7, 52, 1),   -- American Cheese
+(7, 30, 1),   -- Lettuce
+(7, 31, 1),   -- Sliced Tomato
+(7, 71, 1),   -- Ketchup
+(7, 80, 1),   -- Soda 500ml
+(7, 44, 1);   -- French Fries
+
+-- Sandwich Combo (id=8)
+INSERT INTO product_recipes (product_id, ingredient_id, quantity) VALUES
+(8, 4,  1),   -- Baguette
+(8, 14, 1),   -- Chicken Breast
+(8, 30, 1),   -- Lettuce
+(8, 31, 1),   -- Sliced Tomato
+(8, 28, 1),   -- Diced Onion
+(8, 72, 1),   -- Mayonnaise
+(8, 47, 1),   -- Nuggets
+(8, 82, 1);   -- Natural Juice
+
+-- Wiener Combo (id=9) 
+INSERT INTO product_recipes (product_id, ingredient_id, quantity) VALUES
+(9, 7,  1),   -- Bakery Bun
+(9, 19, 1),   -- Pork Sausage
+(9, 73, 1),   -- Mustard
+(9, 71, 1),   -- Ketchup
+(9, 46, 1),   -- Onion Rings
+(9, 80, 1);   -- Soda 500ml
+
+-- Serving Combo (id=10)
+INSERT INTO product_recipes (product_id, ingredient_id, quantity) VALUES
+(10, 44, 1),  -- French Fries
+(10, 46, 1),  -- Onion Rings
+(10, 47, 1),  -- Nuggets
+(10, 48, 1);  -- Mozzarella Sticks
+
+-- Kids Combo (id=11)
+INSERT INTO product_recipes (product_id, ingredient_id, quantity) VALUES
+(11, 47, 1),  -- Nuggets
+(11, 82, 1),  -- Natural Juice
+(11, 62, 1);  -- Chocolate Cookie
