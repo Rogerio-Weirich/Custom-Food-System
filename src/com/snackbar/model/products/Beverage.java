@@ -1,6 +1,8 @@
 package com.snackbar.model.products;
 
 import com.snackbar.model.Product;
+import com.snackbar.persistence.IngredientDAO;
+import com.snackbar.persistence.ProductDAO;
 
 public class Beverage extends Product {
     public Beverage(String name, String description) {
@@ -16,6 +18,16 @@ public class Beverage extends Product {
         return getBasePrice() + calculateAddonsPrice();
     }
 
+    @Override
+    public void decreaseStock() {
+        IngredientDAO.decreaseStock(getName(), 1);
+        ProductDAO.decreaseAddonsStock(getAddons());
+    }
+
+    @Override
+    public boolean isAvailable() {
+        return IngredientDAO.getStock(getName()) > 0;
+    }
 
     @Override
     public String getDetails() {
