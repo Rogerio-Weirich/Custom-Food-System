@@ -75,10 +75,17 @@ public class ProductFactory {
         );
     }
 
-    public static Beverage createSoda() {
+    public static Beverage createSoda350() {
+        return new Beverage(
+                Ingredient.SODA_350ML.getDisplayName(),
+                "Soda Cup 350ml"
+        );
+    }
+
+    public static Beverage createSoda500() {
         return new Beverage(
                 Ingredient.SODA_500ML.getDisplayName(),
-                "Soda Cup"
+                "Soda Cup 500ml"
         );
     }
 
@@ -133,7 +140,7 @@ public class ProductFactory {
 
         combo.addItem(createClassicBurger());
         combo.addItem(createFries());
-        combo.addItem(createSoda());
+        combo.addItem(createSoda500());
         return combo;
     }
 
@@ -159,7 +166,7 @@ public class ProductFactory {
 
         combo.addItem(createClassicWiener());
         combo.addItem(createOnionRings());
-        combo.addItem(createSoda());
+        combo.addItem(createSoda350());
         return combo;
     }
 
