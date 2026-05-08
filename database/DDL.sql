@@ -37,6 +37,21 @@ CREATE TABLE ingredients (
     stock INT NOT NULL DEFAULT 0
 );
 
+CREATE TABLE product_recipes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    product_id INT NOT NULL,
+    ingredient_id INT NOT NULL,
+    quantity INT NOT NULL DEFAULT 1,
+    CONSTRAINT fk_recipe_product
+    FOREIGN KEY (product_id)
+    REFERENCES products(id)
+    ON DELETE CASCADE,
+    CONSTRAINT fk_recipe_ingredient
+    FOREIGN KEY (ingredient_id)
+    REFERENCES ingredients(id)
+    ON DELETE CASCADE
+);
+
 CREATE VIEW vw_available_products AS
 SELECT
     name AS       'Product',
