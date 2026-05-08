@@ -99,7 +99,7 @@ public enum Ingredient {
     KETCHUP             ("Ketchup",               "SAUC"),
     MAYONNAISE          ("Mayonnaise",            "SAUC"),
     MUSTARD             ("Mustard",               "SAUC"),
-    SPICY_SAUCE         ("Spicy Saude",           "SAUC"), 
+    SPICY_SAUCE         ("Spicy Sauce",           "SAUC"), 
     // Beverage (BEVG)
     SODA_350ML          ("Soda 350ml",            "BEVG"),
     SODA_500ML          ("Soda 500ml",            "BEVG"),
