@@ -114,7 +114,7 @@ INSERT INTO ingredients (name, category, price, stock) VALUES
 ("Vanilla Flavor Syrup", "XBEV",  2.00, 150),
 ("Caramel Flavor Syrup", "XBEV",  2.00, 150);
 
--- Classic Hamburger (id=1) 
+-- Classic Hamburger (id=1)
 INSERT INTO product_recipes (product_id, ingredient_id, quantity) VALUES
 (1, 1,  1),   -- Potato Bun
 (1, 10, 1),   -- Beef Patty
@@ -123,7 +123,7 @@ INSERT INTO product_recipes (product_id, ingredient_id, quantity) VALUES
 (1, 31, 1),   -- Sliced Tomato
 (1, 71, 1);   -- Ketchup
 
--- Classic Sandwich (id=3) 
+-- Classic Sandwich (id=3)
 INSERT INTO product_recipes (product_id, ingredient_id, quantity) VALUES
 (3, 4,  1),   -- Baguette
 (3, 14, 1),   -- Chicken Breast
@@ -161,7 +161,7 @@ INSERT INTO product_recipes (product_id, ingredient_id, quantity) VALUES
 (8, 47, 1),   -- Nuggets
 (8, 82, 1);   -- Natural Juice
 
--- Wiener Combo (id=9) 
+-- Wiener Combo (id=9)
 INSERT INTO product_recipes (product_id, ingredient_id, quantity) VALUES
 (9, 7,  1),   -- Bakery Bun
 (9, 19, 1),   -- Pork Sausage
@@ -182,3 +182,4 @@ INSERT INTO product_recipes (product_id, ingredient_id, quantity) VALUES
 (11, 47, 1),  -- Nuggets
 (11, 82, 1),  -- Natural Juice
 (11, 62, 1);  -- Chocolate Cookie
+
