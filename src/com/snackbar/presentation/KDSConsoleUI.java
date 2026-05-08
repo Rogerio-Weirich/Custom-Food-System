@@ -30,7 +30,7 @@ public class KDSConsoleUI implements UserUI {
 
             if (choice == 0) {
                 running = false;
-                System.out.println(Icon.SYSTEM + "Closing Kitchen panel...");
+                System.out.println(Icon.SYSTEM + " Closing Kitchen panel...");
             } else if (choice == 1) {
                 updateProcess();
             } else {
@@ -49,17 +49,17 @@ public class KDSConsoleUI implements UserUI {
         System.out.println("4 - " + OrderStatus.CANCELED.getDescription());
 
         int statusChoice = input.readInt("Please enter the new status: ");
-        String newStatusString = "";
+        OrderStatus newStatus;
 
         switch (statusChoice) {
-            case 1: newStatusString = OrderStatus.PREPARING.name(); break;
-            case 2: newStatusString = OrderStatus.READY.name(); break;
-            case 3: newStatusString = OrderStatus.DELIVERED.name(); break;
-            case 4: newStatusString = OrderStatus.CANCELED.name(); break;
+            case 1: newStatus = OrderStatus.PREPARING; break;
+            case 2: newStatus = OrderStatus.READY; break;
+            case 3: newStatus = OrderStatus.DELIVERED; break;
+            case 4: newStatus = OrderStatus.CANCELED; break;
             default:
                 System.out.println(Icon.ERROR + " Invalid status. Operation cancelled.");
                 return;
         }
-        OrderDAO.updateOrderStatus(orderId, newStatusString);
+        OrderDAO.updateOrderStatus(orderId, newStatus);
     }
 }
