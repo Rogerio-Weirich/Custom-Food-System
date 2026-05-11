@@ -88,7 +88,62 @@ public class OrderDAO {
     }
 
     public static void updateOrderStatus(int orderId, OrderStatus newStatus) {
+        String selectSQL = "SELECT status FROM orders WHERE id = ?";
         String updateSQL = "UPDATE orders SET status = ? WHERE id = ?";
+
+        OrderStatus currentStatus;
+        try (Connection conn = DatabaseConnection.getConnection();
+            PreparedStatement statement = conn.prepareStatement(selectSQL)) {
+            statement.setInt(1, orderId);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if(!resultSet.next()) {
+                    System.out.println(
+                        Icon.WARNING +
+                        " No order found with ID #" +
+                        orderId
+                    );
+                    return;
+                }
+                currentStatus = OrderStatus.valueOf(resultSet.getString("status"));
+            }
+        } catch (Exception e) {
+            System.err.println(
+                Icon.ERROR +
+                " Error fetching current Status: " +
+                e.getMessage()
+            );
+            return;
+        }
+
+        if (currentStatus == OrderStatus.DELIVERED || currentStatus == OrderStatus.CANCELED) {
+            System.out.println(
+                Icon.WARNING +
+                " Order #" +
+                orderId +
+                " is already " +
+                currentStatus.getDescription() +
+                " and cannot be changed."
+            );
+            return;
+        }
+
+        boolean valid = switch (currentStatus) {
+            case PENDING   -> newStatus == OrderStatus.PREPARING || newStatus == OrderStatus.CANCELED;
+            case PREPARING -> newStatus == OrderStatus.READY     || newStatus == OrderStatus.CANCELED;
+            case READY     -> newStatus == OrderStatus.DELIVERED || newStatus == OrderStatus.CANCELED;
+            default        -> false;
+        };
+
+        if (!valid) {
+            System.out.println(
+                Icon.WARNING +
+                " Invalid transition: " +
+                currentStatus.getDescription() +
+                " -> " +
+                newStatus.getDescription()
+            );
+            return;
+        }
 
         try (Connection conn = DatabaseConnection.getConnection();
             PreparedStatement statement = conn.prepareStatement(updateSQL)) {
@@ -123,7 +178,7 @@ public class OrderDAO {
     }
 
     public static void displayActiveOrder() {
-        String queryOrders = "SELECT * FROM orders WHERE status IN (?, ?)";
+        String queryOrders = "SELECT * FROM orders WHERE status IN (?, ?, ?)";
         String queryItems = "SELECT * FROM order_items WHERE order_id = ?";
 
         try (Connection conn = DatabaseConnection.getConnection();
@@ -131,6 +186,8 @@ public class OrderDAO {
             
             statementOrders.setString(1, OrderStatus.PENDING.name());
             statementOrders.setString(2, OrderStatus.PREPARING.name());
+            statementOrders.setString(3, OrderStatus.READY.name());
+            
 
             try (ResultSet resultSetOrders = statementOrders.executeQuery()) {
 
@@ -190,16 +247,22 @@ public class OrderDAO {
     }
 
     public static int getPendingOrdersCount() {
-        String query = "SELECT COUNT(*) FROM orders WHERE status in ('?', '?', '?')";
+        String query = "SELECT COUNT(*) FROM orders WHERE status in (?, ?, ?)";
 
         int count = 0;
 
         try (Connection conn = DatabaseConnection.getConnection();
-            PreparedStatement statement = conn.prepareStatement(query);
-            ResultSet resultSet = statement.executeQuery()) {
+            PreparedStatement statement = conn.prepareStatement(query)) {
             
-            if (resultSet.next()) {
+            statement.setString(1, OrderStatus.PENDING.name());
+            statement.setString(2, OrderStatus.PREPARING.name());
+            statement.setString(3, OrderStatus.READY.name());
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+            
+                if (resultSet.next()) {
                 count = resultSet.getInt(1);
+                }
             }
 
         } catch (Exception e) {
