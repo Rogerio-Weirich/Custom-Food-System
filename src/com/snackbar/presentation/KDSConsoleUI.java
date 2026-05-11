@@ -26,13 +26,14 @@ public class KDSConsoleUI implements UserUI {
             System.out.println("1. Update order Status");
             System.out.println("0. Exit and Back to main menu");
 
-            int choice = input.readInt("Select and option: ");
+            int choice = input.readInt("Select an option: ");
 
             if (choice == 0) {
                 running = false;
                 System.out.println(Icon.SYSTEM + " Closing Kitchen panel...");
             } else if (choice == 1) {
                 updateProcess();
+                input.readString("\nPress [ ENTER ] to refresh...");
             } else {
                 System.out.println(Icon.ERROR + " Invalid option.");
             }
